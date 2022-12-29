@@ -11,6 +11,17 @@ const StyledMenuItem = styled.a`
   gap: 16px;
   cursor: pointer;
   
+  border-right: ${ props=> props.active ?
+    `solid 4px ${props.theme.colors.primary.four}`
+    :
+    'none'
+  };
+  
+  background: ${ props=> props.active ? 
+    'linear-gradient(90deg, rgba(186, 37, 37, 0) 0%, rgba(210, 77, 77, 0.1) 100%)'
+    : 'none'
+  };
+
   span{
     text-transform: uppercase;
     font-size: 15px;
@@ -21,6 +32,10 @@ const StyledMenuItem = styled.a`
 
   &:hover{
     color: ${props => props.theme.colors.primary.four};
+
+    svg {
+      fill: ${props => props.theme.colors.primary.four};
+    }
   }
 `
 
@@ -29,16 +44,12 @@ const StyledMenuIcon = styled.div`
     width: 24px;
     height: 24px;
     fill: ${props => props.theme.colors.neutral.one};
-
-    &:hover{
-      fill: ${props => props.theme.colors.primary.four};
-    }
   }
 `
 
-const MenuItem = ({ title, icon }) => {
+const MenuItem = ({ title, icon, active }) => {
   return (
-    <StyledMenuItem>
+    <StyledMenuItem active={active}>
       <StyledMenuIcon>
         { icon }
       </StyledMenuIcon>
