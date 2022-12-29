@@ -1,11 +1,11 @@
 import styled from "styled-components"
 import { ReactComponent as MagnifierIcon } from './../assets/icons/magnifier.svg';
 import { ReactComponent as BellIcon } from './../assets/icons/bell.svg';
-import { ReactComponent as CancelIcon } from './../assets/icons/cancel.svg';
 import { Avatar } from "./avatar";
+import { ClearableTextInput } from "./ClearableTextInput";
 
 const StyledNavbar = styled.nav`
-  grid-column: span 4;
+  grid-column: 2/-1;
   background-color: ${props => props.theme.colors.neutral.four};
   height: 100%;
   border-radius: 16px;
@@ -14,9 +14,7 @@ const StyledNavbar = styled.nav`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  color: ${props => props.theme.colors.neutral.two};
   gap: 24px;
-  line-height: 24px;
 
   svg {
     fill: ${props => props.theme.colors.neutral.two};
@@ -30,6 +28,7 @@ const StyledSearch = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 24px;
+  flex-grow: 1;
 `
 
 const StyledActions = styled.div`
@@ -44,7 +43,7 @@ export const Navbar = () => {
     <StyledNavbar>
       <StyledSearch>
         <MagnifierIcon />
-        Search
+        <ClearableTextInput />
       </StyledSearch>
       <StyledActions>
         <BellIcon />

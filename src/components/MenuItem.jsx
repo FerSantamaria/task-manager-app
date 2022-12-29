@@ -11,6 +11,7 @@ const StyledMenuItem = styled(NavLink)`
   padding: 16px;
   gap: 16px;
   text-decoration: none;
+  transition: 0.3s;
   
   &.active{
     border-right: solid 4px ${props => props.theme.colors.primary.four};
@@ -23,8 +24,10 @@ const StyledMenuIcon = styled.div`
     width: 24px;
     height: 24px;
     fill: ${props => props.theme.colors.neutral.two};
-
-    ${StyledMenuItem}:hover, .active & {
+    transition: 0.3s;
+    
+    ${StyledMenuItem}:hover &,
+    ${StyledMenuItem}.active & {
       fill: ${props => props.theme.colors.primary.four};
     }
   }
@@ -37,8 +40,10 @@ const StyledMenuText = styled.span`
   font-weight: 500;
   letter-spacing: 0.75px;
   color: ${props => props.theme.colors.neutral.two};
+  transition: 0.3s;
 
-  ${StyledMenuItem}:hover, .active & {
+  ${StyledMenuItem}:hover &,
+  ${StyledMenuItem}.active & {
     color: ${props => props.theme.colors.primary.four};
   }
 `
