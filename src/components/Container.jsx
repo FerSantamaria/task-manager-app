@@ -7,10 +7,12 @@ const StyledContainer = styled.main`
   background-color: ${props => props.theme.colors.neutral.five};
   color: ${props => props.theme.colors.neutral.one};
   font-family: ${props => props.theme.fonts.join(',')};
+  gap: 32px;
   display: grid;
+
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 64px 1fr;
-  gap: 32px;
+  
 `
 
 export const Container = ({ children }) => {
