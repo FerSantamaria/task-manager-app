@@ -15,6 +15,7 @@ export const MenuList = () => {
       <MenuItem 
         title="Dashboard"
         icon={<DasbhboardIcon />}
+        active
       />
       <MenuItem 
         title="My Task"
