@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import MenuItem from "./MenuItem"
-import { ReactComponent as DasbhboardIcon } from './../assets/icons/dashboard.svg';
+import { ReactComponent as DashboardIcon } from './../assets/icons/dashboard.svg';
 import { ReactComponent as MyTaskIcon } from './../assets/icons/bars.svg';
+import { ReactComponent as SettingsIcon } from './../assets/icons/cog.svg';
 
 const StyledMenuList = styled.div`
   width: 100%;
@@ -14,12 +15,18 @@ export const MenuList = () => {
     <StyledMenuList>
       <MenuItem 
         title="Dashboard"
-        icon={<DasbhboardIcon />}
-        active
+        icon={<DashboardIcon />}
+        path="/"
       />
       <MenuItem 
         title="My Task"
         icon={<MyTaskIcon />}
+        path="task"
+      />
+      <MenuItem 
+        title="Settings"
+        icon={<SettingsIcon />}
+        path="settings"
       />
     </StyledMenuList>
   )
