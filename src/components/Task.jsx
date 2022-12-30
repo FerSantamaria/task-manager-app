@@ -1,8 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StyledTitle } from './TaskColumn'
-import { ReactComponent as EllipsisIcon } from './../assets/icons/ellipsis.svg';
 import Tag from './Tag';
+import Avatar from './Avatar';
+import { StyledFlexContainer } from './styled/FlexContainer.styled';
+import Reaction from './Reaction';
+import { ReactComponent as EllipsisIcon } from './../assets/icons/ellipsis.svg';
+import { ReactComponent as ClockIcon } from './../assets/icons/clock.svg';
+import { ReactComponent as ClipIcon } from './../assets/icons/paperclip.svg';
+import { ReactComponent as TreeIcon } from './../assets/icons/file-tree.svg';
+import { ReactComponent as CommentIcon } from './../assets/icons/text-bubble.svg';
 
 const StyledTask = styled.article`
   background-color: ${props => props.theme.colors.neutral.four};
@@ -38,7 +45,25 @@ export const Task = () => {
         <StyledTitle>Lorem, ipsum dolor</StyledTitle>
         <EllipsisIcon />
       </StyledTitleWrapper>
-      <Tag variant="success" outline><EllipsisIcon />android</Tag>
+      <StyledFlexContainer alignItems="center" justifyContent="space-between">
+        <span>3 points</span>
+        <Tag variant={true ? "danger" : undefined}>
+          <ClockIcon />
+          Yesterday
+        </Tag>
+      </StyledFlexContainer>
+      <StyledFlexContainer gap="8px" flexWrap="wrap">
+        <Tag variant="success">Android</Tag>
+        <Tag variant="warning">iOS</Tag>
+      </StyledFlexContainer>
+      <StyledFlexContainer alignItems="center" justifyContent="space-between">
+        <Avatar />
+        <StyledFlexContainer alignItems="center" gap="16px">
+          <Reaction icon={<ClipIcon />} />
+          <Reaction count={3} icon={<TreeIcon />} />
+          <Reaction count={3} icon={<CommentIcon />} />
+        </StyledFlexContainer>
+      </StyledFlexContainer>
     </StyledTask>
   )
 }
