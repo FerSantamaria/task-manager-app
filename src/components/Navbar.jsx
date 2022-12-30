@@ -1,20 +1,24 @@
 import styled from "styled-components"
 import { ReactComponent as MagnifierIcon } from './../assets/icons/magnifier.svg';
 import { ReactComponent as BellIcon } from './../assets/icons/bell.svg';
-import { Avatar } from "./avatar";
+import Avatar from "./Avatar";
 import { ClearableTextInput } from "./ClearableTextInput";
 
 const StyledNavbar = styled.nav`
-  grid-column: 2/-1;
   background-color: ${props => props.theme.colors.neutral.four};
-  height: 100%;
   border-radius: 16px;
-  padding: 16px;
+  padding: 0 16px;
+  margin-left: 32px;
+  margin-right: 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  
+  @media screen and (max-width: 480px) {
+    gap: 12px;
+  }
 
   svg {
     fill: ${props => props.theme.colors.neutral.two};
@@ -27,8 +31,12 @@ const StyledSearch = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 24px;
   flex-grow: 1;
+  gap: 24px;
+
+  @media screen and (max-width: 480px) {
+    gap: 12px;
+  }
 `
 
 const StyledActions = styled.div`
@@ -36,6 +44,10 @@ const StyledActions = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 24px;
+
+  @media screen and (max-width: 480px) {
+    gap: 12px;
+  }
 `
 
 export const Navbar = () => {
@@ -47,7 +59,7 @@ export const Navbar = () => {
       </StyledSearch>
       <StyledActions>
         <BellIcon />
-        <Avatar />
+        <Avatar size={40} />
       </StyledActions>
     </StyledNavbar>
   )

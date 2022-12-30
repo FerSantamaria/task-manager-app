@@ -4,10 +4,9 @@ import { MenuList } from './MenuList'
 import RavnLogo from './../assets/ravn.svg'
 
 const StyledSidebar = styled.aside`
-  grid-column: 1;
-  grid-row: 1 / span 2;
+  width: 100%;
+  min-height: 100%;
   background-color: ${props => props.theme.colors.neutral.four};
-  height: 100%;
   border-radius: 24px;
   padding: 16px 0;
   display: flex;
@@ -18,7 +17,7 @@ const StyledSidebar = styled.aside`
 const StyledLogoWrapper = styled.div`
   width: 100%;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 `
 
 const StyledLogo = styled.img`
