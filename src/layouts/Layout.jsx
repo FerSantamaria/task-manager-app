@@ -16,7 +16,7 @@ const SidebarWrapper = styled.div`
   position: fixed;
   padding: 32px 0 32px 32px;
 
-  @media screen and (max-width: 768px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.md}) {
     display: none;
   }
 `
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   position: fixed;
   padding-top: 32px;
 
-  @media screen and (max-width: 768px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.md}) {
     width: 100%;
     margin-left: 0;
   }

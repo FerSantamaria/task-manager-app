@@ -6,25 +6,25 @@ const UnselectedStyle = css`
   transition: 0.2s;
 
   svg{
-    fill: ${props => props.theme.colors.neutral.one};
+    fill: ${({theme}) => theme.colors.neutral.one};
   }
 `
 
 const SelectedStyle = css`
   background-color: transparent;
-  color: ${props => props.theme.colors.primary.four};
-  border: solid 1px ${props => props.theme.colors.primary.four};
+  color: ${({theme}) => theme.colors.primary.four};
+  border: solid 1px ${({theme}) => theme.colors.primary.four};
 
   svg{
-    fill: ${props => props.theme.colors.primary.four};
+    fill: ${({theme}) => theme.colors.primary.four};
   }
 `
 
 const StyledButton = styled.button`
   border: none;
   outline: none;
-  background-color: ${props => props.theme.colors.primary.four};
-  color: ${props => props.theme.colors.neutral.one};
+  background-color: ${({theme}) => theme.colors.primary.four};
+  color: ${({theme}) => theme.colors.neutral.one};
   padding: 8px;
   font-size: 15px;
   line-height: 24px;
@@ -42,11 +42,11 @@ const StyledButton = styled.button`
   svg{
     width: 24px;
     height: 24px;
-    fill: ${props => props.theme.colors.neutral.one};
+    fill: ${({theme}) => theme.colors.neutral.one};
   }
 
-  ${props => props.unselected && UnselectedStyle }
-  ${props => props.selected && SelectedStyle }
+  ${({unselected}) => unselected && UnselectedStyle }
+  ${({selected}) => selected && SelectedStyle }
 `
 
 export const Button = ({ children, ...props }) => {

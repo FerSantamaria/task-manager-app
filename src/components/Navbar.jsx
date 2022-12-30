@@ -16,7 +16,7 @@ const StyledNavbar = styled.nav`
   justify-content: space-between;
   gap: 24px;
   
-  @media screen and (max-width: 480px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.xs}) {
     gap: 12px;
   }
 
@@ -34,7 +34,7 @@ const StyledSearch = styled.div`
   flex-grow: 1;
   gap: 24px;
 
-  @media screen and (max-width: 480px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.xs}) {
     gap: 12px;
   }
 `
@@ -45,7 +45,7 @@ const StyledActions = styled.div`
   align-items: center;
   gap: 24px;
 
-  @media screen and (max-width: 480px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.xs}) {
     gap: 12px;
   }
 `

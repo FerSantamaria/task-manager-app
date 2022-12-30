@@ -1,5 +1,9 @@
 export const darkTheme = {
   colors: {
+    success: "#70B252",
+    info: "#2F61BF",
+    warning: "#E5B454",
+    danger: "#DA584B",
     neutral: {
       one: "#FFFFFF",
       two: "#94979A",
@@ -27,4 +31,9 @@ export const darkTheme = {
     }
   },
   fonts: ["sans-serif"],
+  breakpoints: {
+    xs: "480px",
+    md: "768px",
+    lg: "1280px"
+  }
 }

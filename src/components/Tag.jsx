@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+const OutlineStyle = css`
+  background-color: transparent;
+  outline: solid 1px ${({theme, variant}) => theme.colors[variant] || theme.colors.neutral.one};
+`
 
 const StyledTag = styled.span`
   padding: 4px 16px;
@@ -10,18 +15,31 @@ const StyledTag = styled.span`
   font-size: 15px;
   line-height: 24px;
   border-radius: 4px;
-  color: ${props => props.theme.colors.neutral.one};
-  background-color: ${props => `${props.theme.colors.neutral.one}19`};
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: ${({theme, variant}) =>  theme.colors[variant] || theme.colors.neutral.one};
+  background-color: ${({theme, variant}) => `${theme.colors[variant] || theme.colors.neutral.one}19`};
+
+  svg {
+    fill: ${({theme, variant}) =>  theme.colors[variant] || theme.colors.neutral.one};
+  }
+
+  ${({outline}) => outline && OutlineStyle }
 `
 
-const Tag = ({children}) => {
+const Tag = ({ variant, outline, children}) => {
   return (
-    <StyledTag>
+    <StyledTag variant={variant} outline={outline}>
       { children }
     </StyledTag>
   )
 }
 
-Tag.propTypes = {}
+Tag.propTypes = {
+  variant: PropTypes.oneOf(["success", "info", "warning", "danger"]),
+  outline: PropTypes.bool,
+}
 
 export default Tag
