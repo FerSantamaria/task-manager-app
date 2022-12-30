@@ -3,20 +3,30 @@ import styled from 'styled-components'
 import { ActionBar } from '../../components/ActionBar'
 import TaskColumn from '../../components/TaskColumn'
 
-const StyledColumnsContainer = styled.div`
+const ContentWrapper = styled.div`
+  flex: 1;
+  padding: 32px 0 0 32px;
+  border: solid 2px violet;
+  max-height: initial;
   display: flex;
-  padding-top: 16px;
-  gap: 32px;
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-grow: 0;
+  flex-direction: column;
+  overflow: hidden;
 `
+
+const StyledColumnsContainer = styled.div`
+  padding-top: 16px;
+  width: 100%;
+  flex: 1;
+  max-height: initial;
+  border: solid 2px yellow;
+  overflow: scroll;
+  display: flex;
+  gap: 32px;
+`
+
 export const Dashboard = () => {
   return (
-    <>
+    <ContentWrapper>
       <ActionBar />
       <StyledColumnsContainer>
         <TaskColumn label='Working (1)' />
@@ -24,6 +34,6 @@ export const Dashboard = () => {
         <TaskColumn label='Cancelled (4)' />
         <TaskColumn label='Pending (3)' />
       </StyledColumnsContainer>
-    </>
+    </ContentWrapper>
   )
 }

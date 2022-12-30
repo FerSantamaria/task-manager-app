@@ -10,10 +10,9 @@ const StyledActionBar = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  height: fit-content;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
+  padding: 8px 32px 8px 8px;
 `
 
 const StyledActionContainer = styled.div`

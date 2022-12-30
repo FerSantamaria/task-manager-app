@@ -5,12 +5,13 @@ import { Task } from './Task'
 const StyledTaskColumn = styled.section`
   min-width: 350px;
   max-width: 350px;
-  height: 100%;
+  flex: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-bottom: 800px;
   gap: 16px;
+  overflow: scroll;
+  padding-bottom: 32px;
+  border: solid 2px blue;
 `
 
 export const StyledTitle = styled.p`
@@ -25,6 +26,7 @@ const TaskColumn = ({ label }) => {
   return (
     <StyledTaskColumn>
       <StyledTitle>{label}</StyledTitle>
+      <Task />
       <Task />
       <Task />
     </StyledTaskColumn>
