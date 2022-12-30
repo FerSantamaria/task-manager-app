@@ -26,6 +26,7 @@ const TaskColumn = ({ label }) => {
     <StyledTaskColumn>
       <StyledTitle>{label}</StyledTitle>
       <Task />
+      <Task />
     </StyledTaskColumn>
   )
 }
