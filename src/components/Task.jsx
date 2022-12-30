@@ -13,10 +13,15 @@ const StyledTask = styled.article`
   flex-direction: column;
   gap: 16px;
 
-  svg{
+  & > div > svg{
     width: 24px;
     height: 24px;
     fill: ${props => props.theme.colors.neutral.one};
+    cursor: pointer;
+
+    &:hover{
+      filter: brightness(80%);
+    }
   }
 `
 
@@ -33,7 +38,7 @@ export const Task = () => {
         <StyledTitle>Lorem, ipsum dolor</StyledTitle>
         <EllipsisIcon />
       </StyledTitleWrapper>
-      <Tag>android</Tag>
+      <Tag variant="success" outline><EllipsisIcon />android</Tag>
     </StyledTask>
   )
 }
