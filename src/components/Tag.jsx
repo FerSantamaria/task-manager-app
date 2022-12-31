@@ -18,6 +18,7 @@ const StyledTag = styled.span`
   display: flex;
   align-items: center;
   gap: 8px;
+  user-select: none;
 
   color: ${({theme, variant}) =>  theme.colors[variant] || theme.colors.neutral.one};
   background-color: ${({theme, variant}) => `${theme.colors[variant] || theme.colors.neutral.one}19`};
