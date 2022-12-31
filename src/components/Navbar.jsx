@@ -5,7 +5,7 @@ import Avatar from "./Avatar";
 import { ClearableTextInput } from "./ClearableTextInput";
 
 const StyledNavbar = styled.nav`
-  background-color: ${props => props.theme.colors.neutral.four};
+  background-color: ${({theme}) =>theme.colors.neutral.four};
   border-radius: 16px;
   padding: 0 16px;
   margin-left: 32px;

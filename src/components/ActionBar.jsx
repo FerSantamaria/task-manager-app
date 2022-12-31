@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from './Button'
-import { ReactComponent as DashboardIcon } from './../assets/icons/dashboard.svg';
-import { ReactComponent as BarsIcon } from './../assets/icons/bars.svg';
-import { ReactComponent as PlusIcon } from './../assets/icons/plus.svg';
+import Modal from './Modal'
+import { ReactComponent as DashboardIcon } from './../assets/icons/dashboard.svg'
+import { ReactComponent as BarsIcon } from './../assets/icons/bars.svg'
+import { ReactComponent as PlusIcon } from './../assets/icons/plus.svg'
 
 const StyledActionBar = styled.div`
   width: 100%;
@@ -22,6 +23,8 @@ const StyledActionContainer = styled.div`
 `
 
 export const ActionBar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <StyledActionBar>
       <StyledActionContainer>
@@ -32,9 +35,12 @@ export const ActionBar = () => {
           <DashboardIcon />
         </Button>
       </StyledActionContainer>
-      <Button onClick={() => alert("HI")} >
+      <Button onClick={() => setOpen(true)}>
         <PlusIcon />
       </Button>
+      <Modal isOpen={open} onClose={() => setOpen(false)}>
+        Hi
+      </Modal>
     </StyledActionBar>
   )
 }

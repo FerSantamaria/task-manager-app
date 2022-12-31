@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { ActionBar } from '../../components/ActionBar'
 import TaskColumn from '../../components/TaskColumn'
@@ -23,7 +22,7 @@ const StyledColumnsContainer = styled.div`
   gap: 32px;
 `
 
-export const Dashboard = () => {
+export const Dashboard = () => {  
   return (
     <ContentWrapper>
       <ActionBar />
