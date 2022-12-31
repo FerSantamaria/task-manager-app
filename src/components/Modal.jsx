@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import PeopleSelect from './PeopleSelect'
 import TagSelect from './TagSelect'
+import EstimateSelect from './EstimateSelect'
 
 const StyledModal = styled.div`
   display: ${({open}) => open ? 'flex' : 'none'}; 
@@ -13,7 +14,7 @@ const StyledModal = styled.div`
   width: 100%; 
   height: 100%;
   overflow: auto; 
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.6);
   align-items: center;
   justify-content: center;
   
@@ -37,6 +38,7 @@ const Modal = ({isOpen, onClose, children}) => {
     <StyledModal open={isOpen} onClick={onClose}>
       <div onClick={(e)=> e.stopPropagation()}>
         {/* { children } */}
+        <EstimateSelect />
         <PeopleSelect/>
         <TagSelect />
         <button onClick={onClose}>Cerrar</button>
