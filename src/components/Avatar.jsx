@@ -1,12 +1,6 @@
-import styled from 'styled-components'
+import { StyledAvatar } from './styled/Avatar.styled'
 import UserAvatar from './../assets/avatar.jpg'
 import PropTypes from 'prop-types'
- 
-const StyledAvatar = styled.img`
-  width: ${props =>  `${props.size || 32}px`};
-  height: ${props =>  `${props.size || 32}px`};
-  border-radius: 50%;
-`
 
 const Avatar = ({ size }) => {
   return (

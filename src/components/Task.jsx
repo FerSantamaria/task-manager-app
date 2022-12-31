@@ -1,52 +1,24 @@
 import React from 'react'
-import styled from 'styled-components'
-import { StyledTitle } from './TaskColumn'
 import Tag from './Tag';
 import Avatar from './Avatar';
-import { StyledFlexContainer } from './styled/FlexContainer.styled';
 import Reaction from './Reaction';
+import Dropdown from './Dropdown';
+import { Button } from './Button';
+import { StyledFlexContainer } from './styled/FlexContainer.styled';
+import { StyledTitle } from './styled/TaskColumn.styled'
+import { StyledTask, StyledTitleWrapper } from './styled/Task.styled';
 import { ReactComponent as ClockIcon } from './../assets/icons/clock.svg';
 import { ReactComponent as ClipIcon } from './../assets/icons/paperclip.svg';
 import { ReactComponent as TreeIcon } from './../assets/icons/file-tree.svg';
 import { ReactComponent as CommentIcon } from './../assets/icons/text-bubble.svg';
 import { ReactComponent as PencilIcon } from './../assets/icons/pencil.svg';
 import { ReactComponent as TrashIcon } from './../assets/icons/trash-can.svg';
-import Dropdown from './Dropdown';
-import { Button } from './Button';
-
-const StyledTask = styled.article`
-  background-color: ${props => props.theme.colors.neutral.four};
-  width: 100%;
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  & > div > svg{
-    width: 24px;
-    height: 24px;
-    fill: ${props => props.theme.colors.neutral.one};
-    cursor: pointer;
-
-    &:hover{
-      filter: brightness(80%);
-    }
-  }
-`
-
-const StyledTitleWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-  align-items: center;
-`
 
 export const Task = () => {
   return (
     <StyledTask>
       <StyledTitleWrapper>
         <StyledTitle>Lorem, ipsum dolor</StyledTitle>
-        {/* <EllipsisIcon /> */}
         <Dropdown>
           <Button unselected onClick={()=>alert("hi")}><PencilIcon /> Edit</Button>
           <Button unselected onClick={()=>alert("hi")}><TrashIcon /> Delete</Button>
@@ -65,7 +37,7 @@ export const Task = () => {
       </StyledFlexContainer>
       <StyledFlexContainer alignItems="center" justifyContent="space-between">
         <Avatar />
-        <StyledFlexContainer alignItems="center" gap="16px">
+        <StyledFlexContainer alignItems="center" gap="8px">
           <Reaction icon={<ClipIcon />} />
           <Reaction count={3} icon={<TreeIcon />} />
           <Reaction count={3} icon={<CommentIcon />} />

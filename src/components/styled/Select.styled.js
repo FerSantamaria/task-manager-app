@@ -89,7 +89,7 @@ export const SelectStyles = {
   }),
   multiValue: (styles) => ({
     ...styles,
-    // backgroundColor: "transparent"
+    backgroundColor: "transparent"
   }),
 }
 
