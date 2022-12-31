@@ -28,7 +28,6 @@ const Wrapper = styled.div`
   width: calc(100% - 18rem);
   position: fixed;
   padding-top: 32px;
-  border: solid 2px green;
   display: flex;
   flex-direction: column;
 

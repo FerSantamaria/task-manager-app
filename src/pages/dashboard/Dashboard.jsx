@@ -6,7 +6,6 @@ import TaskColumn from '../../components/TaskColumn'
 const ContentWrapper = styled.div`
   flex: 1;
   padding: 32px 0 0 32px;
-  border: solid 2px violet;
   max-height: initial;
   display: flex;
   flex-direction: column;
@@ -15,10 +14,10 @@ const ContentWrapper = styled.div`
 
 const StyledColumnsContainer = styled.div`
   padding-top: 16px;
+  padding-right: 32px;
   width: 100%;
   flex: 1;
   max-height: initial;
-  border: solid 2px yellow;
   overflow: scroll;
   display: flex;
   gap: 32px;

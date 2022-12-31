@@ -11,7 +11,16 @@ const StyledTaskColumn = styled.section`
   gap: 16px;
   overflow: scroll;
   padding-bottom: 32px;
-  border: solid 2px blue;
+`
+export const StyledListTitle = styled.p`
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 500;
+  width: 100%;
+  letter-spacing: 0.75px;
+  background-color: ${props => props.theme.colors.neutral.five};
+  position: sticky;
+  top: 0;
 `
 
 export const StyledTitle = styled.p`
@@ -25,8 +34,8 @@ export const StyledTitle = styled.p`
 const TaskColumn = ({ label }) => {
   return (
     <StyledTaskColumn>
-      <StyledTitle>{label}</StyledTitle>
-      <Task />
+      <StyledListTitle>{label}</StyledListTitle>
+        <Task />
       <Task />
       <Task />
     </StyledTaskColumn>
