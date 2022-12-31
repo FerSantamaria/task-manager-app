@@ -25,6 +25,7 @@ export const StyledListTitle = styled.p`
   background-color: ${props => props.theme.colors.neutral.five};
   position: sticky;
   top: 0;
+  z-index: 1;
 `
 
 export const StyledTitle = styled.p`
@@ -40,8 +41,8 @@ const TaskColumn = ({ label }) => {
     <StyledTaskColumn>
       <StyledListTitle>{label}</StyledListTitle>
         <Task />
-      <Task />
-      <Task />
+        <Task />
+        <Task />
     </StyledTaskColumn>
   )
 }

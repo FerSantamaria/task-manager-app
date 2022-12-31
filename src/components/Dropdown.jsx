@@ -25,18 +25,11 @@ const StyledDropdownList = styled.ul`
   border-radius: 8px;
   width: 150px;
   cursor: pointer;
-  background-color: ${({theme}) => theme.colors.neutral.four};
+  background-color: ${({theme}) => theme.colors.neutral.three};
 
-  & > li {
-
-    &:hover{
-      background-color: ${({theme}) => theme.colors.neutral.five};
-    }
-
-    button{
-      width: 100%;
-      justify-content: flex-start;
-    }
+  button{
+    width: 100%;
+    justify-content: flex-start;
   }
 `
 

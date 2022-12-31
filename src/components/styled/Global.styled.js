@@ -12,6 +12,12 @@ const Global = createGlobalStyle`
       display: none;
     }
   }
+
+  svg{
+    width: 24px;
+    height: 24px;
+    fill: ${({ theme }) => theme.colors.neutral.one};
+  }
 `
 
 export default Global;

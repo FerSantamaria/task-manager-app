@@ -11,9 +11,11 @@ export const useOutsideClick = (callback) => {
     };
 
     document.addEventListener('click', handleClick, true);
+    document.addEventListener('scroll', handleClick, true);
 
     return () => {
       document.removeEventListener('click', handleClick, true);
+      document.addEventListener('scroll', handleClick, true);
     };
   }, [ref]);
 
