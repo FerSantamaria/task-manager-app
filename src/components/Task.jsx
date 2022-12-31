@@ -5,11 +5,14 @@ import Tag from './Tag';
 import Avatar from './Avatar';
 import { StyledFlexContainer } from './styled/FlexContainer.styled';
 import Reaction from './Reaction';
-import { ReactComponent as EllipsisIcon } from './../assets/icons/ellipsis.svg';
 import { ReactComponent as ClockIcon } from './../assets/icons/clock.svg';
 import { ReactComponent as ClipIcon } from './../assets/icons/paperclip.svg';
 import { ReactComponent as TreeIcon } from './../assets/icons/file-tree.svg';
 import { ReactComponent as CommentIcon } from './../assets/icons/text-bubble.svg';
+import { ReactComponent as PencilIcon } from './../assets/icons/pencil.svg';
+import { ReactComponent as TrashIcon } from './../assets/icons/trash-can.svg';
+import Dropdown from './Dropdown';
+import { Button } from './Button';
 
 const StyledTask = styled.article`
   background-color: ${props => props.theme.colors.neutral.four};
@@ -43,7 +46,11 @@ export const Task = () => {
     <StyledTask>
       <StyledTitleWrapper>
         <StyledTitle>Lorem, ipsum dolor</StyledTitle>
-        <EllipsisIcon />
+        {/* <EllipsisIcon /> */}
+        <Dropdown>
+          <Button unselected onClick={()=>alert("hi")}><PencilIcon /> Edit</Button>
+          <Button unselected onClick={()=>alert("hi")}><TrashIcon /> Delete</Button>
+        </Dropdown>
       </StyledTitleWrapper>
       <StyledFlexContainer alignItems="center" justifyContent="space-between">
         <span>3 points</span>

@@ -51,7 +51,7 @@ const StyledButton = styled.button`
 
 export const Button = ({ children, ...props }) => {
   return (
-    <StyledButton {...props} >
+    <StyledButton {...props}>
       { children }
     </ StyledButton>
   )
