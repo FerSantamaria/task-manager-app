@@ -11,6 +11,10 @@ const StyledTaskColumn = styled.section`
   gap: 16px;
   overflow: scroll;
   padding-bottom: 32px;
+
+  @media (max-width: ${({theme}) => theme.breakpoints.md}) {
+    padding-bottom: 128px;
+  }
 `
 export const StyledListTitle = styled.p`
   font-size: 18px;
