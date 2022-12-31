@@ -2,8 +2,8 @@ import React from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
 import Avatar from './Avatar'
-import { ReactComponent as PersonIcon } from './../assets/icons/person.svg';
 import { SelectStyles, StyledPeopleMenuOption  } from './styled/Select.styled'
+import { ReactComponent as PersonIcon } from './../assets/icons/person.svg';
 
 const PeopleSelect = () => {
   return (

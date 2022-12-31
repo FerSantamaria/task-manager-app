@@ -1,9 +1,8 @@
 import React from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
-import Avatar from './Avatar'
-import { ReactComponent as EstimateIcon } from './../assets/icons/plus-minus.svg';
 import { SelectStyles, StyledPeopleMenuOption  } from './styled/Select.styled'
+import { ReactComponent as EstimateIcon } from './../assets/icons/plus-minus.svg';
 
 const options = [{
   label: "Estimate",

@@ -1,37 +1,9 @@
-import React, { useState, Children, cloneElement } from 'react'
+import { useState, Children, cloneElement } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components';
-import { Button } from './Button'
-import { ReactComponent as EllipsisIcon } from './../assets/icons/ellipsis.svg';
 import { useOutsideClick } from '../hooks/useOutsideClick';
-
-const StyledDropDown = styled.div`
-  position: relative;
-
-  button{
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: ${({theme}) => theme.colors.neutral.one};
-  }
-`
-const StyledDropdownList = styled.ul`
-  position: absolute;
-  list-style-type: none;
-  padding: 8px;
-  right: 0;
-  border: 1px solid grey;
-  border-radius: 8px;
-  width: 150px;
-  cursor: pointer;
-  background-color: ${({theme}) => theme.colors.neutral.three};
-
-  button{
-    width: 100%;
-    justify-content: flex-start;
-  }
-`
+import { Button } from './Button'
+import { StyledDropDown } from './styled/Dropdown.styled';
+import { ReactComponent as EllipsisIcon } from './../assets/icons/ellipsis.svg';
 
 const Dropdown = ({ children }) => {
   const childrenArray = Children.toArray(children);
@@ -50,7 +22,7 @@ const Dropdown = ({ children }) => {
     <StyledDropDown ref={ref}>
       <Button unselected onClick={handleOpen}><EllipsisIcon /></Button>
       {open ? (
-        <StyledDropdownList>
+        <ul>
           { 
             childrenArray.map((child, index) => (
               <li key={index} className="menu-item">
@@ -63,7 +35,7 @@ const Dropdown = ({ children }) => {
               </li>
             ))
           }
-        </StyledDropdownList>
+        </ul>
       ) : null}
     </StyledDropDown>
   );
