@@ -2,7 +2,7 @@ import { useState, Children, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import { Button } from './Button'
-import { StyledDropDown } from './styled/Dropdown.styled';
+import { StyledDropDown } from './styled/components/Dropdown.styled';
 import { ReactComponent as EllipsisIcon } from './../assets/icons/ellipsis.svg';
 
 const Dropdown = ({ children }) => {

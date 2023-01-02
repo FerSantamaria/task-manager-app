@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledMenuItem, StyledMenuIcon, StyledMenuText } from './styled/MenuItem.styled'
+import { StyledMenuItem, StyledMenuIcon, StyledMenuText } from './styled/components/MenuItem.styled'
 
 const MenuItem = ({ title, icon, path }) => {
   return (

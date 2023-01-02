@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { StyledFlexContainer } from './FlexContainer.styled'
+import { StyledFlexContainer } from './../FlexContainer.styled'
 
 export const StyledReaction = styled(StyledFlexContainer)`
   color: ${({ theme }) => theme.colors.neutral.one};

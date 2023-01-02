@@ -17,12 +17,13 @@ export const StyledModal = styled.aside`
     background-color: ${({ theme }) => theme.colors.neutral.three};
     border-radius: 8px;
     padding: 16px;
-    width: 90%;
-    max-width: 1000px;
+    width: fit-content;
+    max-width: 50%;
     color: ${({ theme }) => theme.colors.neutral.one};
     height: fit-content;
     display: flex;
+    flex-direction: column;
     gap: 16px;
-    align-items: center;
+    align-items: flex-start;
   }
 `

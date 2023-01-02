@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { StyledClearableTextInput } from './styled/ClearableTextInput.styled';
+import { StyledClearableTextInput } from './styled/components/ClearableTextInput.styled';
 import { ReactComponent as CancelIcon } from './../assets/icons/cancel.svg';
 
 export const ClearableTextInput = () => {
