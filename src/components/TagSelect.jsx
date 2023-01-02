@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react'
 import Select, { components } from 'react-select'
 import PropTypes from 'prop-types'
+import { GET_TAGS } from '../graphQL/queries';
+import { useQuery } from '@apollo/client';
 import { ReactComponent as TagIcon } from './../assets/icons/tag.svg';
 import { SelectStyles, StyledPeopleMenuOption, StyledTageMenuCheckbox } from './styled/components/Select.styled'
 
@@ -37,6 +40,26 @@ const MultiValueContainer = ({ selectProps, data }) => {
 }
 
 const TagSelect = () => {
+  const [options, setOptions] = useState([])
+
+  const { loading, data } = useQuery(GET_TAGS)
+
+   useEffect(() => {
+    if (data?.__type?.enumValues) {
+      let fetchedData = data.__type.enumValues.map(item => ({
+        value: item.name,
+        label: item.name,
+      }))
+
+      let options = [{
+        label: "Tag Title",
+        options: fetchedData
+      }]
+
+      setOptions(options)
+    }
+  }, [data])
+
   return (
     <Select
       styles={SelectStyles}
@@ -45,7 +68,9 @@ const TagSelect = () => {
       closeMenuOnSelect={false}
       hideSelectedOptions={false}
       isClearable={false}
-      options={[{ label: "Tag Title", options: [{label:'iOS', value:'iOS'},{label:'Android', value:'Android'}, {label:'Android', value:'Android1'}, {label:'Android', value:'Android2'}] }]}
+      options={options}
+      isLoading={loading}
+      loadingMessage={()=> "Loading data"}
       placeholder={
         <StyledPeopleMenuOption>
           <TagIcon />

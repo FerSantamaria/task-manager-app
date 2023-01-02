@@ -11,7 +11,7 @@ export const SelectStyles = {
     boxShadow: "none",
     backgroundColor: "#94979A19",
     padding: 0,
-    width: "150px"
+    width: "175px"
   }),
   dropdownIndicator: (styles) => ({
     ...styles,
@@ -38,11 +38,13 @@ export const SelectStyles = {
     border: "solid 1px #94979A",
     borderRadius: "8px",
     width: "fit-content",
-    minWidth: "150px",
+    minWidth: "175px",
   }),
   menuList: (styles) => ({
     ...styles,
     padding: 0,
+    width: "max-content",
+    minWidth: "100%",
   }),
   groupHeading: (styles) => ({
     ...styles,
@@ -91,6 +93,10 @@ export const SelectStyles = {
     ...styles,
     backgroundColor: "transparent"
   }),
+  loadingMessage: (styles) => ({
+    ...styles,
+    width: "100%",
+  })
 }
 
 export const StyledPeopleMenuOption = styled.div`

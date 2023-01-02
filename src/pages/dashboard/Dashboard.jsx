@@ -11,7 +11,8 @@ export const Dashboard = () => {
 
   return (
     <StyledContentWrapper>
-
+      <ActionBar />
+      
       { loading &&
         <StyledCard>
           Fetching data
@@ -26,7 +27,7 @@ export const Dashboard = () => {
 
       { data && 
         <>
-          <ActionBar />
+          
           <StyledColumnsContainer   hideScrollbars={false}>
             {
               data && data?.__type?.enumValues.map((type, index) => 
