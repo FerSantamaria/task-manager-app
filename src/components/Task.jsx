@@ -5,8 +5,8 @@ import Reaction from './Reaction';
 import Dropdown from './Dropdown';
 import { Button } from './Button';
 import { StyledFlexContainer } from './styled/FlexContainer.styled';
-import { StyledTitle } from './styled/TaskColumn.styled'
-import { StyledTask, StyledTitleWrapper } from './styled/Task.styled';
+import { StyledTitle } from './styled/components/TaskColumn.styled'
+import { StyledTask, StyledTitleWrapper } from './styled/components/Task.styled';
 import { ReactComponent as ClockIcon } from './../assets/icons/clock.svg';
 import { ReactComponent as ClipIcon } from './../assets/icons/paperclip.svg';
 import { ReactComponent as TreeIcon } from './../assets/icons/file-tree.svg';
@@ -37,7 +37,7 @@ export const Task = () => {
       </StyledFlexContainer>
       <StyledFlexContainer alignItems="center" justifyContent="space-between">
         <Avatar />
-        <StyledFlexContainer alignItems="center" gap="8px">
+        <StyledFlexContainer alignItems="center" gap="16px">
           <Reaction icon={<ClipIcon />} />
           <Reaction count={3} icon={<TreeIcon />} />
           <Reaction count={3} icon={<CommentIcon />} />

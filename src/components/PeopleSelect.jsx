@@ -2,7 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
 import Avatar from './Avatar'
-import { SelectStyles, StyledPeopleMenuOption  } from './styled/Select.styled'
+import { SelectStyles, StyledPeopleMenuOption  } from './styled/components/Select.styled'
 import { ReactComponent as PersonIcon } from './../assets/icons/person.svg';
 
 const PeopleSelect = () => {

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import {StyledReaction, StyledReactionCount} from './styled/Reaction.styled'
+import {StyledReaction, StyledReactionCount} from './styled/components/Reaction.styled'
 
 const Reaction = ({ count, icon}) => {
   return (

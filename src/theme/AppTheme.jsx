@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components"
-import Global from "../components/styled/Global.styled"
+import Global from "./../components/styled/Global.styled"
 import { darkTheme } from "./darkTheme"
 
 export const AppTheme = ({ children }) => {

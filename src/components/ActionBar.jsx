@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { StyledActionBar } from './styled/ActionBar.styled'
+import { StyledActionBar } from './styled/components/ActionBar.styled'
 import { Button } from './Button'
 import Modal from './Modal'
 import { ReactComponent as DashboardIcon } from './../assets/icons/dashboard.svg'
 import { ReactComponent as BarsIcon } from './../assets/icons/bars.svg'
 import { ReactComponent as PlusIcon } from './../assets/icons/plus.svg'
+import CreateForm from './CreateForm'
 
 export const ActionBar = () => {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,7 @@ export const ActionBar = () => {
         <PlusIcon />
       </Button>
       <Modal isOpen={open} onClose={() => setOpen(false)}>
-        Hi
+        <CreateForm />
       </Modal>
     </StyledActionBar>
   )

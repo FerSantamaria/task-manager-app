@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { StyledDatePicker } from './styled/CustomDatePicker.styled'
+import { StyledDatePicker } from './styled/components/CustomDatePicker.styled'
 import "react-datepicker/dist/react-datepicker.css"
-import "./styled/DatePicker.scss"
+import "./styled/components/DatePicker.scss"
 
 const CustomDatePicker = props => {
   const [startDate, setStartDate] = useState();

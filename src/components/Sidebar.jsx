@@ -1,5 +1,5 @@
 import { MenuList } from './MenuList'
-import { StyledSidebar, StyledLogoWrapper, StyledLogo } from './styled/Sidebar.styled'
+import { StyledSidebar, StyledLogoWrapper, StyledLogo } from './styled/components/Sidebar.styled'
 import RavnLogo from './../assets/ravn.svg'
 
 StyledSidebar

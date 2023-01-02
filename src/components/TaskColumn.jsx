@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { Task } from './Task'
-import { StyledTaskColumn, StyledListTitle } from './styled/TaskColumn.styled'
+import { StyledTaskColumn, StyledListTitle } from './styled/components/TaskColumn.styled'
 
 
 const TaskColumn = ({ label }) => {
