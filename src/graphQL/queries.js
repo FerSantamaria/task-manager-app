@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_STATUSES = gql`
-  query {
+  query StatusesList{
     __type(name: "Status"){
       name
       enumValues{
@@ -12,7 +12,7 @@ export const GET_STATUSES = gql`
 `
 
 export const GET_TASKS = gql`
-  query {
+  query FilteredTasks{
     tasks(input: {}){
       id
       name
@@ -40,5 +40,17 @@ export const GET_TASKS_BY_STATUS = gql`
         avatar
       }
 	  }
+  }
+`
+
+export const GET_PROFILE_INFO = gql`
+  query ProfileInfo{
+    profile {
+      fullName
+      email
+      type
+      createdAt
+      updatedAt
+    }
   }
 `
