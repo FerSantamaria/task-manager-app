@@ -23,7 +23,7 @@ export const ActionBar = () => {
       <Button onClick={() => setOpen(true)}>
         <PlusIcon />
       </Button>
-      <Modal isOpen={open} onClose={() => setOpen(false)}>
+      <Modal isOpen={open} onCancel={() => setOpen(false)} onConfirm={() => alert("confirm")}>
         <CreateForm />
       </Modal>
     </StyledActionBar>
