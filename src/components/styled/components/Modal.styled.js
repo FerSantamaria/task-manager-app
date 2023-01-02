@@ -18,7 +18,7 @@ export const StyledModal = styled.aside`
     border-radius: 8px;
     padding: 16px;
     width: fit-content;
-    max-width: 50%;
+    max-width: 75%;
     color: ${({ theme }) => theme.colors.neutral.one};
     height: fit-content;
     display: flex;
