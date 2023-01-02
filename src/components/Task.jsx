@@ -7,12 +7,12 @@ import { Button } from './Button';
 import { StyledFlexContainer } from './styled/FlexContainer.styled';
 import { StyledTitle } from './styled/components/TaskColumn.styled'
 import { StyledTask, StyledTitleWrapper } from './styled/components/Task.styled';
-import { ReactComponent as ClockIcon } from './../assets/icons/clock.svg';
 import { ReactComponent as ClipIcon } from './../assets/icons/paperclip.svg';
 import { ReactComponent as TreeIcon } from './../assets/icons/file-tree.svg';
 import { ReactComponent as CommentIcon } from './../assets/icons/text-bubble.svg';
 import { ReactComponent as PencilIcon } from './../assets/icons/pencil.svg';
 import { ReactComponent as TrashIcon } from './../assets/icons/trash-can.svg';
+import TimeTag from './TimeTag';
 
 export const Task = ({ task }) => {
   return (
@@ -26,10 +26,7 @@ export const Task = ({ task }) => {
       </StyledTitleWrapper>
       <StyledFlexContainer alignItems="center" justifyContent="space-between">
         <span>3 points</span>
-        <Tag variant={true ? "danger" : undefined}>
-          <ClockIcon />
-          Yesterday
-        </Tag>
+        <TimeTag date={task.dueDate} />
       </StyledFlexContainer>
       <StyledFlexContainer gap="8px" flexWrap="wrap">
         {
