@@ -27,7 +27,7 @@ export const Dashboard = () => {
       { data && 
         <>
           <ActionBar />
-          <StyledColumnsContainer>
+          <StyledColumnsContainer   hideScrollbars={false}>
             {
               data && data?.__type?.enumValues.map((type, index) => 
                 <TaskColumn key={index} label={type.name} />
