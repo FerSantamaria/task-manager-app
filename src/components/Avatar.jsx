@@ -9,7 +9,7 @@ const Avatar = ({ size, url }) => {
 }
 
 Avatar.propTypes = {
-  size: PropTypes.oneOf([32, 40, 48]),
+  size: PropTypes.oneOf([32, 40, 48, 128]),
   url: PropTypes.string
 }
 

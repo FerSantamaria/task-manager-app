@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const StyledFlexContainer = styled.div`
   display: flex;
-  direction: ${({ direction }) => direction || 'initial'};
+  flex-direction: ${({ flexDirection }) => flexDirection || 'initial'};
   align-items: ${({ alignItems }) => alignItems || 'initial'};
   justify-content: ${({ justifyContent }) => justifyContent || 'initial'};
   align-content: ${({ alignContent }) => alignContent || 'initial'};

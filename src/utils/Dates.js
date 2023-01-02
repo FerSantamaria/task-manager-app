@@ -21,21 +21,24 @@ export const isOnTime = (date) => {
 export const isLate = (date) => {
   let referenceDate = dayjs(date)
 
-  return referenceDate.isBefore(currentDate.clone())
+  return referenceDate.isBefore(currentDate.clone(), "days")
 }
 
 export const isAlmostLate = (date) => {
   let referenceDate = dayjs(date)
+  let futureDate = currentDate.clone()
 
-  return referenceDate.isBetween(currentDate.clone(), currentDate.clone().add(2, "days"))
+  return referenceDate.isBetween(futureDate, futureDate.add(2, "days"), "days", "[]")
 }
 
-export const timeToText = (date) => {
+export const timeToText = (date, humanized=false) => {
   let referenceDate = dayjs(date)
 
-  if (referenceDate.isToday()) return "Today" 
-  if (referenceDate.isYesterday()) return "Yesterday" 
-  if (referenceDate.isTomorrow()) return "Tomorrow" 
+  if (humanized) {
+    if (referenceDate.isToday()) return "Today"
+    if (referenceDate.isYesterday()) return "Yesterday"
+    if (referenceDate.isTomorrow()) return "Tomorrow" 
+  }
 
   return referenceDate.locale("en").format("D MMM, YYYY")
 }

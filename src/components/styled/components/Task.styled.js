@@ -1,11 +1,7 @@
 import styled from "styled-components"
+import { StyledCard } from "./Card.styled"
 
-export const StyledTask = styled.article`
-  background-color: ${props => props.theme.colors.neutral.four};
-  width: 100%;
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
+export const StyledTask = styled(StyledCard)`
   flex-direction: column;
   gap: 16px;
 
