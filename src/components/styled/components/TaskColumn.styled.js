@@ -24,6 +24,7 @@ export  const StyledListTitle = styled.p`
   position: sticky;
   top: 0;
   z-index: 1;
+  text-transform: capitalize;
 `
 
 export const StyledTitle = styled.p`

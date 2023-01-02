@@ -14,11 +14,11 @@ import { ReactComponent as CommentIcon } from './../assets/icons/text-bubble.svg
 import { ReactComponent as PencilIcon } from './../assets/icons/pencil.svg';
 import { ReactComponent as TrashIcon } from './../assets/icons/trash-can.svg';
 
-export const Task = () => {
+export const Task = ({ task }) => {
   return (
     <StyledTask>
       <StyledTitleWrapper>
-        <StyledTitle>Lorem, ipsum dolor</StyledTitle>
+        <StyledTitle>{task.name}</StyledTitle>
         <Dropdown>
           <Button unselected onClick={()=>alert("hi")}><PencilIcon /> Edit</Button>
           <Button unselected onClick={()=>alert("hi")}><TrashIcon /> Delete</Button>
@@ -32,15 +32,18 @@ export const Task = () => {
         </Tag>
       </StyledFlexContainer>
       <StyledFlexContainer gap="8px" flexWrap="wrap">
-        <Tag variant="success">Android</Tag>
-        <Tag variant="warning">iOS</Tag>
+        {
+          task.tags.map((tag, index) => 
+            <Tag key={index} variant="success">{tag}</Tag>
+          )
+        }
       </StyledFlexContainer>
       <StyledFlexContainer alignItems="center" justifyContent="space-between">
-        <Avatar />
+        <Avatar url={task.assignee.avatar} />
         <StyledFlexContainer alignItems="center" gap="16px">
           <Reaction icon={<ClipIcon />} />
-          <Reaction count={3} icon={<TreeIcon />} />
-          <Reaction count={3} icon={<CommentIcon />} />
+          <Reaction count={Math.floor(Math.random() * 10) + 1} icon={<TreeIcon />} />
+          <Reaction count={Math.floor(Math.random() * 10) + 1} icon={<CommentIcon />} />
         </StyledFlexContainer>
       </StyledFlexContainer>
     </StyledTask>
