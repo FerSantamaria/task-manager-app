@@ -18,7 +18,13 @@ const SidebarWrapper = styled.div`
   padding: 32px 0 32px 32px;
 
   @media (max-width: ${({theme}) => theme.breakpoints.md}) {
-    display: none;
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    z-index: 3;
+    padding: 0;
+    background-color: red;
+    width: 100%;
   }
 `
 const Wrapper = styled.div`

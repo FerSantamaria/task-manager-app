@@ -10,10 +10,18 @@ export const StyledMenuItem = styled(NavLink)`
   gap: 16px;
   text-decoration: none;
   transition: 0.3s;
-  
+
   &.active{
-    border-right: solid 4px ${props => props.theme.colors.primary.four};
-    background: linear-gradient(90deg, rgba(186, 37, 37, 0) 0%, rgba(210, 77, 77, 0.1) 100%);
+    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      border-right: solid 4px ${props => props.theme.colors.primary.four};
+      background: linear-gradient(90deg, rgba(186, 37, 37, 0) 0%, rgba(210, 77, 77, 0.1) 100%);
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
   }
 `
 

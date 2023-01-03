@@ -12,6 +12,7 @@ import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
 import { StyledCreateForm } from './styled/components/CreateForm.styled'
 import { StyledFlexContainer } from './styled/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
+import StatusSelect from './StatusSelect'
 
 const INITIAL_DATA = {
   name: "",
@@ -87,6 +88,7 @@ const CreateForm = ({ onCancel }) => {
           <EstimateSelect name="pointEstimate" />
           <PeopleSelect name="assigneeId"/>
           <TagSelect name="tags" />
+          <StatusSelect name="status" />
           <CustomDatePicker name="dueDate" />
         </div>
       </FormikProvider>

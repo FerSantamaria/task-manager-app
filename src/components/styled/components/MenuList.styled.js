@@ -5,4 +5,8 @@ export const StyledMenuList = styled.div`
   gap: 8px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: row;
+  }
 `
