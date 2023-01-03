@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
+import { useField } from 'formik'
+import { useQuery } from '@apollo/client'
+import { GET_POINT_ESTIMATES } from '../graphQL/queries'
 import { SelectStyles, StyledPeopleMenuOption  } from './styled/components/Select.styled'
-import { ReactComponent as EstimateIcon } from './../assets/icons/plus-minus.svg';
-import { useQuery } from '@apollo/client';
-import { GET_POINT_ESTIMATES } from '../graphQL/queries';
+import { ReactComponent as EstimateIcon } from './../assets/icons/plus-minus.svg'
 
 // const options = [{
 //   label: "Estimate",
@@ -17,10 +18,12 @@ import { GET_POINT_ESTIMATES } from '../graphQL/queries';
 //   ]
 // }]
 
-const EstimateSelect = () => {
+const EstimateSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])
-  
+  const [selectedValue, setSelectedValue] = useState()
   const { loading, data } = useQuery(GET_POINT_ESTIMATES)
+  const [ field, meta, helpers ] = useField(props)
+  const hasError = meta.touched && (meta.error !== undefined)
 
   useEffect(() => {
     if (data?.__type?.enumValues) {
@@ -34,7 +37,6 @@ const EstimateSelect = () => {
     }
   }, [data])
   
-
   return (
     <Select
       styles={SelectStyles}
@@ -54,10 +56,23 @@ const EstimateSelect = () => {
           <span>Estimate</span>
         </StyledPeopleMenuOption>
       }
+
+      {...field}
+      {...props}
+
+      value={selectedValue}
+      onChange={(newValue) => {
+        setSelectedValue(newValue)
+        helpers.setValue(newValue.value)
+      }}
+
+      className={hasError ? "input-error" : undefined}
     />
   )
 }
 
-EstimateSelect.propTypes = {}
+EstimateSelect.propTypes = {
+  name: PropTypes.string.isRequired
+}
 
 export default EstimateSelect

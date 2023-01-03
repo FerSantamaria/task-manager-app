@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { useField } from 'formik'
 
 const TextInput = ({ ...props }) => {
-  const [field] = useField(props);
+  const [field, meta] = useField(props);
+  const hasError = meta.touched && (meta.error !== undefined)
   
   return (
     <input 
@@ -11,6 +12,8 @@ const TextInput = ({ ...props }) => {
       
       {...field}
       {...props}
+
+      className={hasError ? "input-error" : undefined}
     />
   )
 }
