@@ -89,10 +89,9 @@ const TagSelect = ({ ...props }) => {
       {...field}
       {...props}
 
-      value={selectedValue}
+      value={field.value}
       onChange={(newValue) => {
-        setSelectedValue(newValue)
-        helpers.setValue(newValue.map(item => item.value))
+        helpers.setValue(newValue)
       }}
 
       className={hasError ? "input-error" : undefined}
