@@ -1,4 +1,4 @@
-import React from 'react'
+import { Button } from './Button'
 import PeopleSelect from './PeopleSelect'
 import TagSelect from './TagSelect'
 import EstimateSelect from './EstimateSelect'
@@ -6,10 +6,15 @@ import CustomDatePicker from './CustomDatePicker'
 import { FormikProvider, useFormik } from 'formik'
 import TextInput from './TextInput'
 import { array, object, date, string } from 'yup'
+import { useMutation } from '@apollo/client'
+import { CREATE_TASK_MUTATION } from '../graphQL/mutations'
+import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
 import { StyledCreateForm } from './styled/components/CreateForm.styled'
+import { StyledFlexContainer } from './styled/FlexContainer.styled'
+import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
 
 const INITIAL_DATA = {
-  title: "",
+  name: "",
   assigneeId: "",
   dueDate: "",
   pointEstimate: "",
@@ -18,7 +23,7 @@ const INITIAL_DATA = {
 }
 
 const VALIDATION_SCHEMA = object({
-  title: string().required(),
+  name: string().required(),
   assigneeId: string().required(),
   dueDate: date().required(),
   pointEstimate: string().required(),
@@ -26,10 +31,15 @@ const VALIDATION_SCHEMA = object({
   tags: array().of(string()).min(1).required(),
 })
 
-const CreateForm = () => {
+const CreateForm = ({ onCancel }) => {
+  
+  const submitForm = (formValues) => {
+    const fullValues = {
+      ...formValues,
+      status: "TODO"
+    }
 
-  const submitForm = (values) => {
-    alert(JSON.stringify(values,"", 4))
+    createTaskMutation({ variables: fullValues })
   }
 
   const formik = useFormik({
@@ -38,19 +48,58 @@ const CreateForm = () => {
     onSubmit: submitForm
   })  
 
-  console.log(formik.errors);
+  const [createTaskMutation, { loading, error }] = useMutation(CREATE_TASK_MUTATION, {
+    update: (cache, { data }) => {
+      console.log(data);
+
+      const { tasks } = cache.readQuery({
+        query: GET_TASKS_BY_STATUS,
+        variables: { status: data.createTask.status }
+      })
+
+      cache.writeQuery({
+        query: GET_TASKS_BY_STATUS,
+        variables: { status: data.createTask.status },
+        data: {
+          tasks: [
+            ...tasks,
+            data.createTask,
+          ]
+        }
+      })
+    },
+    onCompleted: () => {
+      formik.resetForm()
+      onCancel()
+    }
+  });
+
   return (
     <StyledCreateForm>
+      {
+        error && "Error"
+      }
+
       <FormikProvider value={formik}>
-        <TextInput name="title" placeholder="Task Title" />
+        
+        <TextInput name="name" placeholder="Task Title" />
         <div>
           <EstimateSelect name="pointEstimate" />
           <PeopleSelect name="assigneeId"/>
           <TagSelect name="tags" />
           <CustomDatePicker name="dueDate" />
         </div>
-        <button onClick={formik.submitForm} >Create</button>
       </FormikProvider>
+      <StyledFlexContainer justifyContent="space-between" alignItems="center" flexDirection="row" gap="16px" style={{ width: "100%" }}>
+          <div style={{ color: "#E27D73" }}>
+            { error && "An error ocurred, please try again" }
+          </div>
+          
+          <StyledFlexContainer justifyContent="flex-end" flexDirection="row" gap="16px">
+            <Button onClick={onCancel} disabled={loading} unselected>Cancel</Button>
+            <Button onClick={formik.submitForm} disabled={loading} >{ loading ? <SpinnerIcon /> : "Create"}</Button>
+          </StyledFlexContainer>
+        </StyledFlexContainer>
     </StyledCreateForm>
   )
 }

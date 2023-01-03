@@ -7,17 +7,6 @@ import { GET_POINT_ESTIMATES } from '../graphQL/queries'
 import { SelectStyles, StyledPeopleMenuOption  } from './styled/components/Select.styled'
 import { ReactComponent as EstimateIcon } from './../assets/icons/plus-minus.svg'
 
-// const options = [{
-//   label: "Estimate",
-//   options: [
-//     {value: "ZERO", label: "0 Points"},
-//     {value: "ONE", label: "1 Points"},
-//     {value: "TWO", label: "2 Points"},
-//     {value: "FOUR", label: "4 Points"},
-//     {value: "EIGHT", label: "8 Points"},
-//   ]
-// }]
-
 const EstimateSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])
   const [selectedValue, setSelectedValue] = useState()

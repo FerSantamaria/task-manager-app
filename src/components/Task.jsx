@@ -4,6 +4,9 @@ import Avatar from './Avatar';
 import Reaction from './Reaction';
 import Dropdown from './Dropdown';
 import { Button } from './Button';
+import TimeTag from './TimeTag';
+import { useMutation } from '@apollo/client';
+import { DELETE_TASK_MUTATION } from '../graphQL/mutations';
 import { StyledFlexContainer } from './styled/FlexContainer.styled';
 import { StyledTitle } from './styled/components/TaskColumn.styled'
 import { StyledTask, StyledTitleWrapper } from './styled/components/Task.styled';
@@ -12,26 +15,33 @@ import { ReactComponent as TreeIcon } from './../assets/icons/file-tree.svg';
 import { ReactComponent as CommentIcon } from './../assets/icons/text-bubble.svg';
 import { ReactComponent as PencilIcon } from './../assets/icons/pencil.svg';
 import { ReactComponent as TrashIcon } from './../assets/icons/trash-can.svg';
-import TimeTag from './TimeTag';
 
 export const Task = ({ task }) => {
+  const [deleteTaskMutation, { loading }] = useMutation(DELETE_TASK_MUTATION);
+
+  const handleDelete = (taskId) => {
+    deleteTaskMutation({ variables: {
+      id: taskId
+    }})
+  }
+
   return (
     <StyledTask>
       <StyledTitleWrapper>
         <StyledTitle>{task.name}</StyledTitle>
         <Dropdown>
-          <Button unselected onClick={()=>alert("hi")}><PencilIcon /> Edit</Button>
-          <Button unselected onClick={()=>alert("hi")}><TrashIcon /> Delete</Button>
+          <Button unselected onClick={()=>alert(JSON.stringify(task, "", 4))}><PencilIcon /> Edit</Button>
+          <Button unselected onClick={()=>handleDelete(task.id)}><TrashIcon /> { loading ? "Deleting" : "Delete"}</Button>
         </Dropdown>
       </StyledTitleWrapper>
       <StyledFlexContainer alignItems="center" justifyContent="space-between">
-        <span>3 points</span>
+        <span>{task.pointEstimate} POINTS</span>
         <TimeTag date={task.dueDate} />
       </StyledFlexContainer>
       <StyledFlexContainer gap="8px" flexWrap="wrap">
         {
           task.tags.map((tag, index) => 
-            <Tag key={index} variant="success">{tag}</Tag>
+            <Tag key={index} variant="success">{tag.replaceAll("_", " ")}</Tag>
           )
         }
       </StyledFlexContainer>
@@ -39,8 +49,8 @@ export const Task = ({ task }) => {
         <Avatar url={task.assignee.avatar} />
         <StyledFlexContainer alignItems="center" gap="16px">
           <Reaction icon={<ClipIcon />} />
-          <Reaction count={Math.floor(Math.random() * 10) + 1} icon={<TreeIcon />} />
-          <Reaction count={Math.floor(Math.random() * 10) + 1} icon={<CommentIcon />} />
+          <Reaction count={5} icon={<TreeIcon />} />
+          <Reaction count={3} icon={<CommentIcon />} />
         </StyledFlexContainer>
       </StyledFlexContainer>
     </StyledTask>

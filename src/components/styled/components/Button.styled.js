@@ -39,6 +39,11 @@ export const StyledButton = styled.button`
     filter: brightness(80%);
   }
 
+  &:disabled{
+    filter: brightness(50%);
+    cursor: not-allowed;
+  }
+
   svg{
     width: 24px;
     height: 24px;
