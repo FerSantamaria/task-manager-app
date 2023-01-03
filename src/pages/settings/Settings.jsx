@@ -1,16 +1,16 @@
 import { useQuery } from '@apollo/client'
 import Avatar from '../../components/Avatar'
-import { StyledCard } from '../../components/styled/components/Card.styled'
-import { StyledFlexContainer } from '../../components/styled/FlexContainer.styled'
-import { StyledContentWrapper } from '../../components/styled/pages/ContentWrapper.styled'
 import Tag from '../../components/Tag'
 import { GET_PROFILE_INFO } from '../../graphQL/queries'
 import { timeToText } from '../../utils/Dates'
 import Skeleton from 'react-loading-skeleton'
+import { StyledCard } from '../../components/styled/components/Card.styled'
+import { StyledFlexContainer } from '../../components/styled/FlexContainer.styled'
+import { StyledContentWrapper } from '../../components/styled/pages/ContentWrapper.styled'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 export const Settings = () => {
-  const { loading, error, data } = useQuery(GET_PROFILE_INFO)
+  const { data } = useQuery(GET_PROFILE_INFO)
 
   return (
     <StyledContentWrapper style={{ paddingRight: "32px", alignItems: "center" }}>
