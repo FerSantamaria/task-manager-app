@@ -55,10 +55,9 @@ const PeopleSelect = ({ ...props }) => {
       {...field}
       {...props}
 
-      value={selectedValue}
+      value={field.value}
       onChange={(newValue) => {
-        setSelectedValue(newValue)
-        helpers.setValue(newValue.value)
+        helpers.setValue(newValue)
       }}
 
       className={hasError ? "input-error" : undefined}

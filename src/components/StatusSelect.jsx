@@ -15,7 +15,7 @@ const StatusSelect = ({ ...props }) => {
 
   useEffect(() => {
     if (data?.__type?.enumValues) {
-      let fetchedData = data.__type.enumValues.map(item => ({value: item.name, label: item.name}))
+      let fetchedData = data.__type.enumValues.map(item => ({value: item.name, label: item.name.replaceAll("_", " ")}))
       let options = [{
         label: "Status",
         options: fetchedData
@@ -46,10 +46,9 @@ const StatusSelect = ({ ...props }) => {
       {...field}
       {...props}
 
-      value={selectedValue}
+      value={field.value}
       onChange={(newValue) => {
-        setSelectedValue(newValue)
-        helpers.setValue(newValue.value)
+        helpers.setValue(newValue)
       }}
 
       className={hasError ? "input-error" : undefined}
