@@ -9,12 +9,21 @@ export const StyledSidebar = styled.aside`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0;
+    border-radius: 0;
+  }
 `
 
 export const StyledLogoWrapper = styled.div`
   width: 100%;
   text-align: center;
   margin-bottom: 40px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
 `
 
 export const StyledLogo = styled.img`

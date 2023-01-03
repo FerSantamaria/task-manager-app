@@ -7,7 +7,6 @@ const Global = createGlobalStyle`
     box-sizing: border-box;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    color: ${props => props.theme.colors.neutral.one};
     font-family: ${props => props.theme.fonts.join(',')};
 
     &::-webkit-scrollbar {
