@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import Select, { components } from 'react-select'
 import PropTypes from 'prop-types'
-import { GET_TAGS } from '../graphQL/queries';
-import { useQuery } from '@apollo/client';
-import { ReactComponent as TagIcon } from './../assets/icons/tag.svg';
+import { useField } from 'formik'
+import { GET_TAGS } from '../graphQL/queries'
+import { useQuery } from '@apollo/client'
+import { ReactComponent as TagIcon } from './../assets/icons/tag.svg'
 import { SelectStyles, StyledPeopleMenuOption, StyledTageMenuCheckbox } from './styled/components/Select.styled'
 
 const InputOption = ({
@@ -39,16 +40,18 @@ const MultiValueContainer = ({ selectProps, data }) => {
   return val;
 }
 
-const TagSelect = () => {
+const TagSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])
-
+  const [selectedValue, setSelectedValue] = useState()
   const { loading, data } = useQuery(GET_TAGS)
-
-   useEffect(() => {
+  const [ field, meta, helpers ] = useField(props)
+  const hasError = meta.touched && (meta.error !== undefined)
+  
+  useEffect(() => {
     if (data?.__type?.enumValues) {
       let fetchedData = data.__type.enumValues.map(item => ({
         value: item.name,
-        label: item.name,
+        label: item.name.replaceAll("_", " "),
       }))
 
       let options = [{
@@ -82,10 +85,23 @@ const TagSelect = () => {
         Option: InputOption,
         MultiValueContainer: MultiValueContainer
       }}
+
+      {...field}
+      {...props}
+
+      value={selectedValue}
+      onChange={(newValue) => {
+        setSelectedValue(newValue)
+        helpers.setValue(newValue.map(item => item.value))
+      }}
+
+      className={hasError ? "input-error" : undefined}
     />
   )
 }
 
-TagSelect.propTypes = {}
+TagSelect.propTypes = {
+  name: PropTypes.string.isRequired
+}
 
 export default TagSelect

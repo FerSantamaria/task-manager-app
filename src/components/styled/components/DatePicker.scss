@@ -26,7 +26,8 @@
   padding: 9px;
 }
 
-.react-datepicker__day--selected{
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected{
   background-color: #DA584B;
 }
 

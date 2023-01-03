@@ -18,6 +18,10 @@ const Global = createGlobalStyle`
     height: 24px;
     fill: ${({ theme }) => theme.colors.neutral.one};
   }
+
+  .input-error{
+    border-bottom: solid 2px ${({ theme }) => theme.colors.primary.four} !important;
+  }
 `
 
 export default Global;

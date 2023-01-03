@@ -7,8 +7,9 @@ import "./styled/components/DatePicker.scss"
 
 const CustomDatePicker = ({ ...props }) => {
   const [startDate, setStartDate] = useState();
-  const [ field, _, helpers] = useField(props);
-
+  const [ field, meta, helpers] = useField(props);
+  const hasError = meta.touched && (meta.error !== undefined)
+  
   return (
      <StyledDatePicker
       selected={startDate}
@@ -28,6 +29,8 @@ const CustomDatePicker = ({ ...props }) => {
         setStartDate(date)
         helpers.setValue(date)
       }}
+
+      className={hasError ? "input-error" : undefined}
     />
   )
 }
