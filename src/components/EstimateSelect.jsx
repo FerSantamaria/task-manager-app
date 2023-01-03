@@ -33,6 +33,7 @@ const EstimateSelect = ({ ...props }) => {
       options={options}
       isLoading={loading}
       loadingMessage={()=> "Loading data"}
+      getOptionValue={option => option.value}
       formatOptionLabel={option => (
         <StyledPeopleMenuOption>
           <EstimateIcon />

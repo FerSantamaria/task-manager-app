@@ -14,15 +14,6 @@ import { StyledFlexContainer } from './styled/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
 import StatusSelect from './StatusSelect'
 
-const INITIAL_DATA = {
-  name: "",
-  assigneeId: "",
-  dueDate: "",
-  pointEstimate: "",
-  status: "TODO",
-  tags: []
-}
-
 const VALIDATION_SCHEMA = object({
   name: string().required(),
   assigneeId: string().required(),
@@ -32,8 +23,17 @@ const VALIDATION_SCHEMA = object({
   tags: array().of(string()).min(1).required(),
 })
 
-const CreateForm = ({ onCancel }) => {
-  
+const EditForm = ({ task, onCancel }) => {
+  console.log(task);
+  const INITIAL_DATA = {
+    name: task.name,
+    assigneeId: task.assigneeId,
+    dueDate: task.dueDate,
+    pointEstimate: task.pointEstimate,
+    status: task.status,
+    tags: task.tags
+  }
+
   const submitForm = (formValues) => {
     const fullValues = {
       ...formValues,
@@ -107,6 +107,6 @@ const CreateForm = ({ onCancel }) => {
   )
 }
 
-CreateForm.propTypes = {}
+EditForm.propTypes = {}
 
-export default CreateForm
+export default EditForm
