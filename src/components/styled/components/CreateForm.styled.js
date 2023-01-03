@@ -23,5 +23,12 @@ export const StyledCreateForm = styled.section`
   & > div {
     display: flex;
     gap: 16px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `

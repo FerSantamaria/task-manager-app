@@ -1,23 +1,51 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_TASK_MUTATION = gql`
-  mutation CreateTaskMutation(
+  mutation createTaskMutation(
     $assigneeId: String!
     $dueDate: DateTime!
     $name: String!
     $pointEstimate: PointEstimate!
-    $Status: Status!
+    $status: Status!
     $tags: [TaskTag!]!
   ){
-    CreateTaskInput(
+    createTask( input: {
       assigneeId: $assigneeId
       dueDate: $dueDate
       name: $name
       pointEstimate: $pointEstimate
-      status: $Status
+      status: $status
       tags: $tags
-    ){
+    }){
       id
+      name
+      tags
+      dueDate
+      pointEstimate
+      status
+      assignee {
+        avatar
+      }
+    }
+  }
+`
+
+export const DELETE_TASK_MUTATION = gql`
+  mutation deleteTaskMutation(
+    $id: String!
+  ){
+    deleteTask( input: {
+      id: $id
+    }){
+      id
+      name
+      tags
+      dueDate
+      pointEstimate
+      status
+      assignee {
+        avatar
+      }
     }
   }
 `
