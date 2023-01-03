@@ -60,3 +60,8 @@ Start the server
 ```bash
   yarn dev
 ```
+The server should start running and the app will be server at http://localhost:3001
+## Additional comments
+
+The filtering feature wasnt implemented because time restrinctions but everything
+else should be there.
