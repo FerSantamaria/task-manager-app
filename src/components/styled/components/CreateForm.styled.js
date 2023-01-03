@@ -24,7 +24,7 @@ export const StyledCreateForm = styled.section`
     display: flex;
     gap: 16px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
       width: 100%;
       flex-direction: column;
       justify-content: center;
