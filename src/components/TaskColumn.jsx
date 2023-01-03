@@ -36,12 +36,12 @@ const TaskColumn = ({ label }) => {
         {
           data?.tasks.length == 0 &&
           <StyledCard>
-            Your {label.toLowerCase()} list is empty
+            Your {formatedLabel} list is empty
           </StyledCard>
         }
         
         {
-          data && data?.tasks.map((task, index) => 
+          data && data?.tasks.map((task) => 
             <Task key={task.id} task={task}/>
           )
         }
