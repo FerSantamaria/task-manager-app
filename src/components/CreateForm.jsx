@@ -89,7 +89,6 @@ const CreateForm = ({ onCancel }) => {
           <EstimateSelect name="pointEstimate" />
           <PeopleSelect name="assigneeId"/>
           <TagSelect name="tags" />
-          <StatusSelect name="status" />
           <CustomDatePicker name="dueDate" />
         </div>
       </FormikProvider>

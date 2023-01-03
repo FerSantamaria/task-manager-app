@@ -13,6 +13,7 @@ import { StyledCreateForm } from './styled/components/CreateForm.styled'
 import { StyledFlexContainer } from './styled/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
 import StatusSelect from './StatusSelect'
+import dayjs from 'dayjs'
 
 const VALIDATION_SCHEMA = object({
   name: string().required(),
@@ -24,14 +25,14 @@ const VALIDATION_SCHEMA = object({
 })
 
 const EditForm = ({ task, onCancel }) => {
-  console.log(task);
+
   const INITIAL_DATA = {
     name: task.name,
-    assigneeId: task.assigneeId,
-    dueDate: task.dueDate,
-    pointEstimate: task.pointEstimate,
-    status: task.status,
-    tags: task.tags
+    assigneeId: {value: task.assignee.id, label: task.assignee.fullName, image: task.assignee.avatar},
+    dueDate: dayjs(task.dueDate).toDate(),
+    pointEstimate: {value: task.pointEstimate, label: `${task.pointEstimate} Points`},
+    status: {value: task.status, label: task.status.replaceAll("_", " ")},
+    tags: task.tags.map(item => ({ value: item, label: item.replaceAll("_", " ") }))
   }
 
   const submitForm = (formValues) => {
@@ -100,7 +101,7 @@ const EditForm = ({ task, onCancel }) => {
           
           <StyledFlexContainer justifyContent="flex-end" flexDirection="row" gap="16px">
             <Button onClick={onCancel} disabled={loading} unselected>Cancel</Button>
-            <Button onClick={formik.submitForm} disabled={loading} >{ loading ? <SpinnerIcon /> : "Create"}</Button>
+            <Button onClick={formik.submitForm} disabled={loading} >{ loading ? <SpinnerIcon /> : "Update"}</Button>
           </StyledFlexContainer>
         </StyledFlexContainer>
     </StyledCreateForm>

@@ -8,6 +8,7 @@ const Global = createGlobalStyle`
     -ms-overflow-style: none;
     scrollbar-width: none;
     font-family: ${props => props.theme.fonts.join(',')};
+    letter-spacing: 0.75px;
 
     &::-webkit-scrollbar {
       display: none;

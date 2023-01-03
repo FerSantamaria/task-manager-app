@@ -8,7 +8,6 @@ import { SelectStyles, StyledPeopleMenuOption  } from './styled/components/Selec
 
 const StatusSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])
-  const [selectedValue, setSelectedValue] = useState()
   const { loading, data } = useQuery(GET_STATUSES)
   const [ field, meta, helpers ] = useField(props)
   const hasError = meta.touched && (meta.error !== undefined)

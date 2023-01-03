@@ -35,10 +35,10 @@ export const Task = ({ task }) => {
         <Dropdown>
           <Button unselected onClick={()=>setOpenModal(true)}><PencilIcon /> Edit</Button>
           <Button unselected onClick={()=>handleDelete(task.id)}><TrashIcon /> { loading ? "Deleting" : "Delete"}</Button>
-          <Modal isOpen={openModal} onCancel={() => setOpenModal(false)}>
-            <EditForm task={task} />
-          </Modal>
         </Dropdown>
+        <Modal isOpen={openModal} onCancel={() => setOpenModal(false)}>
+          <EditForm task={task} />
+        </Modal>
       </StyledTitleWrapper>
       <StyledFlexContainer alignItems="center" justifyContent="space-between">
         <span>{task.pointEstimate} POINTS</span>
