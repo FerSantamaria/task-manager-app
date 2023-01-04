@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Tag from './Tag';
 import Avatar from './Avatar';
 import Reaction from './Reaction';
@@ -28,6 +28,11 @@ export const Task = ({ task }) => {
     }})
   }
 
+  useEffect(() => {
+    console.log(task);
+  }, [task])
+  
+
   return (
     <StyledTask>
       <StyledTitleWrapper>
@@ -36,9 +41,12 @@ export const Task = ({ task }) => {
           <Button unselected onClick={()=>setOpenModal(true)}><PencilIcon /> Edit</Button>
           <Button unselected onClick={()=>handleDelete(task.id)}><TrashIcon /> { loading ? "Deleting" : "Delete"}</Button>
         </Dropdown>
-        <Modal isOpen={openModal} onCancel={() => setOpenModal(false)}>
-          <EditForm task={task} />
-        </Modal>
+        { openModal &&
+          <Modal isOpen={openModal} onCancel={() => setOpenModal(false)}>
+            <EditForm task={task} />
+          </Modal>
+        }
+        
       </StyledTitleWrapper>
       <StyledFlexContainer alignItems="center" justifyContent="space-between">
         <span>{task.pointEstimate} POINTS</span>
