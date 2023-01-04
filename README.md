@@ -26,6 +26,14 @@ Dependency | Min Version
 [Node.js](https://nodejs.org/en/) | 18.0
 [Yarn](https://classic.yarnpkg.com/en/) | 1.22
 
+## Environment Variables
+
+To run this project, you will need to add the following environment variable to your 
+.env file (theres a .env.template file in the repository to help you with this proccess)
+and the content must be the provided API Token
+
+`VITE_API_TOKEN`
+
 ## Run Locally
 
  Clone the project
@@ -57,14 +65,6 @@ Start the server
 ```bash
   yarn dev
 ```
-
-## Environment Variables
-
-To run this project, you will need to add the following environment variable to your 
-.env file (theres a .env.template file in the repository to help you with this proccess)
-and the content must be the provided API Token
-
-`VITE_API_TOKEN`
 
 The server should start running and the app will be server at http://localhost:3001
 ## Additional comments
