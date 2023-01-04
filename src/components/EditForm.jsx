@@ -7,7 +7,7 @@ import { FormikProvider, useFormik } from 'formik'
 import TextInput from './TextInput'
 import { array, object, date, string } from 'yup'
 import { useMutation } from '@apollo/client'
-import { CREATE_TASK_MUTATION } from '../graphQL/mutations'
+import { UPDATE_TASK_MUTATION } from '../graphQL/mutations'
 import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
 import { StyledCreateForm } from './styled/components/CreateForm.styled'
 import { StyledFlexContainer } from './styled/FlexContainer.styled'
@@ -17,18 +17,17 @@ import dayjs from 'dayjs'
 
 const VALIDATION_SCHEMA = object({
   name: string().required(),
-  assigneeId: string().required(),
   dueDate: date().required(),
-  pointEstimate: string().required(),
-  status: string().required(),
-  tags: array().of(string()).min(1).required(),
+  pointEstimate: object().required(),
+  status: object().required(),
+  tags: array().of(object()).min(1).required(),
 })
 
 const EditForm = ({ task, onCancel }) => {
 
   const INITIAL_DATA = {
     name: task.name,
-    assigneeId: {value: task.assignee.id, label: task.assignee.fullName, image: task.assignee.avatar},
+    position: task.position,
     dueDate: dayjs(task.dueDate).toDate(),
     pointEstimate: {value: task.pointEstimate, label: `${task.pointEstimate} Points`},
     status: {value: task.status, label: task.status.replaceAll("_", " ")},
@@ -38,38 +37,41 @@ const EditForm = ({ task, onCancel }) => {
   const submitForm = (formValues) => {
     const fullValues = {
       ...formValues,
-      status: "TODO"
+      id: task.id,
+      position: task.position,
+      pointEstimate: formValues.pointEstimate.value,
+      tags: formValues.tags.map(item => item.value),
+      status: formValues.status.value,
     }
-    formik.resetForm()
-    alert(JSON.stringify(formValues, "", 4))
-    // createTaskMutation({ variables: fullValues })
+
+    updateTaskMutation({ variables: fullValues })
   }
 
   const formik = useFormik({
     initialValues: INITIAL_DATA,
-    // validationSchema: VALIDATION_SCHEMA,
+    validationSchema: VALIDATION_SCHEMA,
     onSubmit: submitForm
   })  
 
-  const [createTaskMutation, { loading, error }] = useMutation(CREATE_TASK_MUTATION, {
+  const [updateTaskMutation, { loading, error }] = useMutation(UPDATE_TASK_MUTATION, {
     update: (cache, { data }) => {
       console.log(data);
 
-      const { tasks } = cache.readQuery({
-        query: GET_TASKS_BY_STATUS,
-        variables: { status: data.createTask.status }
-      })
+      // const { tasks } = cache.readQuery({
+      //   query: GET_TASKS_BY_STATUS,
+      //   variables: { status: data.createTask.status }
+      // })
 
-      cache.writeQuery({
-        query: GET_TASKS_BY_STATUS,
-        variables: { status: data.createTask.status },
-        data: {
-          tasks: [
-            ...tasks,
-            data.createTask,
-          ]
-        }
-      })
+      // cache.writeQuery({
+      //   query: GET_TASKS_BY_STATUS,
+      //   variables: { status: data.createTask.status },
+      //   data: {
+      //     tasks: [
+      //       ...tasks,
+      //       data.createTask,
+      //     ]
+      //   }
+      // })
     },
     onCompleted: () => {
       formik.resetForm()
@@ -88,7 +90,7 @@ const EditForm = ({ task, onCancel }) => {
         <TextInput name="name" placeholder="Task Title" />
         <div>
           <EstimateSelect name="pointEstimate" />
-          <PeopleSelect name="assigneeId"/>
+          {task.position}
           <TagSelect name="tags" />
           <StatusSelect name="status" />
           <CustomDatePicker name="dueDate" />

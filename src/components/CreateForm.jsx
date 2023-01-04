@@ -19,17 +19,15 @@ const INITIAL_DATA = {
   assigneeId: "",
   dueDate: "",
   pointEstimate: "",
-  status: "TODO",
   tags: []
 }
 
 const VALIDATION_SCHEMA = object({
   name: string().required(),
-  assigneeId: string().required(),
+  assigneeId: object().required(),
   dueDate: date().required(),
-  pointEstimate: string().required(),
-  status: string().required(),
-  tags: array().of(string()).min(1).required(),
+  pointEstimate: object().required(),
+  tags: array().of(object()).min(1).required(),
 })
 
 const CreateForm = ({ onCancel }) => {
@@ -37,16 +35,18 @@ const CreateForm = ({ onCancel }) => {
   const submitForm = (formValues) => {
     const fullValues = {
       ...formValues,
+      assigneeId: formValues.assigneeId.value,
+      pointEstimate: formValues.pointEstimate.value,
+      tags: formValues.tags.map(item => item.value),
       status: "TODO"
     }
-    formik.resetForm()
-    alert(JSON.stringify(formValues, "", 4))
-    // createTaskMutation({ variables: fullValues })
+
+    createTaskMutation({ variables: fullValues })
   }
 
   const formik = useFormik({
     initialValues: INITIAL_DATA,
-    // validationSchema: VALIDATION_SCHEMA,
+    validationSchema: VALIDATION_SCHEMA,
     onSubmit: submitForm
   })  
 
@@ -75,7 +75,7 @@ const CreateForm = ({ onCancel }) => {
       onCancel()
     }
   });
-
+  console.log(formik.errors);
   return (
     <StyledCreateForm>
       {

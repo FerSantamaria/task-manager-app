@@ -40,6 +40,7 @@ export const GET_TASKS = gql`
       dueDate
       pointEstimate
       status
+      position
       assignee {
         id
         fullName
@@ -58,6 +59,7 @@ export const GET_TASKS_BY_STATUS = gql`
       dueDate
       pointEstimate
       status
+      position
       assignee {
         id
         fullName
