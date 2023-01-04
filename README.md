@@ -3,8 +3,7 @@
 
 A simple react app for managing your tasks. It allows you to view, create, update and delete tasks in a variety of states (or lists).
 
-![alt text](https://github.com/FerSantamaria/task-manager-app/blob/main/readme_content/task-manager-desktop.png "Task manager app on desktop")
-![alt text](https://github.com/FerSantamaria/task-manager-app/blob/main/readme_content/task-manager-mobile.png "Task manager app on mobile")
+![alt text](https://github.com/FerSantamaria/task-manager-app/blob/main/readme_content/task-manager.jpeg "Task manager app")
 
 
 ## Tools, libraries and dependencies
