@@ -15,7 +15,7 @@ const Modal = ({onCancel, confirmText, cancelText, children}) => {
   // Return a portal for having our modal on a separate container than the rest of the app
   return ReactDOM.createPortal(
     <StyledModal>
-      <div onClick={handlePropagation}>
+      <div>
         { childrenWithProps }
       </div>
     </StyledModal>,
