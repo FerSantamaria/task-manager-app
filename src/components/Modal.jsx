@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { StyledModal } from './styled/components/Modal.styled'
 
-const Modal = ({isOpen, onCancel, onConfirm, confirmText, cancelText, children}) => {
+const Modal = ({onCancel, onConfirm, confirmText, cancelText, children}) => {
   
   const handlePropagation = (e) => {
     e.stopPropagation()
@@ -11,12 +11,12 @@ const Modal = ({isOpen, onCancel, onConfirm, confirmText, cancelText, children})
 
   const childrenWithProps = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
-      return cloneElement(child, { key: index, isOpen, onCancel, onConfirm, confirmText, cancelText });
+      return cloneElement(child, { key: index, onCancel, onConfirm, confirmText, cancelText });
     }
   })
 
   return ReactDOM.createPortal(
-    <StyledModal open={isOpen} onClick={onCancel}>
+    <StyledModal>
       <div onClick={handlePropagation}>
         { childrenWithProps }
       </div>
@@ -26,7 +26,6 @@ const Modal = ({isOpen, onCancel, onConfirm, confirmText, cancelText, children})
 }
 
 Modal.propTypes = {
-  open: PropTypes.bool,
   onCancel: PropTypes.func,
   onConfirm: PropTypes.func,
   confirmText: PropTypes.string,
