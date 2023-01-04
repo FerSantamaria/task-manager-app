@@ -12,6 +12,7 @@ const Dropdown = ({ children }) => {
   const handleClickOutside = () => {
     setOpen(false);
   }
+  
   const ref = useOutsideClick(handleClickOutside);
 
   const handleOpen = () => {

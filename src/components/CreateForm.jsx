@@ -96,7 +96,6 @@ const CreateForm = ({ onCancel }) => {
           <div style={{ color: "#E27D73" }}>
             { error && "An error ocurred, please try again" }
           </div>
-          
           <StyledFlexContainer justifyContent="flex-end" flexDirection="row" gap="16px">
             <Button onClick={onCancel} disabled={loading} unselected>Cancel</Button>
             <Button onClick={formik.submitForm} disabled={loading} >{ loading ? <SpinnerIcon /> : "Create"}</Button>
