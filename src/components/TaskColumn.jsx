@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
-import { StyledCard } from './styled/components/Card.styled'
+import { StyledCard } from './../styled/components/Card.styled'
 import { Task } from './Task'
-import { StyledTaskColumn, StyledListTitle } from './styled/components/TaskColumn.styled'
+import { StyledTaskColumn, StyledListTitle } from './../styled/components/TaskColumn.styled'
 import { useQuery } from '@apollo/client'
 import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
 

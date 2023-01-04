@@ -1,7 +1,7 @@
 import { Children, cloneElement, isValidElement } from 'react';
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { StyledModal } from './styled/components/Modal.styled'
+import { StyledModal } from './../styled/components/Modal.styled'
 
 const Modal = ({onCancel, confirmText, cancelText, children}) => {
   

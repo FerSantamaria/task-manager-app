@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
 import { useField } from 'formik'
-import Avatar from './Avatar'
-import { GET_USERS } from '../graphQL/queries'
+import Avatar from '../Avatar'
+import { GET_USERS } from '../../graphQL/queries'
 import { useQuery } from '@apollo/client'
-import { SelectStyles, StyledPeopleMenuOption  } from './styled/components/Select.styled'
-import { ReactComponent as PersonIcon } from './../assets/icons/person.svg'
+import { SelectStyles, StyledPeopleMenuOption  } from '../../styled/components/Select.styled'
+import { ReactComponent as PersonIcon } from './../../assets/icons/person.svg'
 
 const PeopleSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])

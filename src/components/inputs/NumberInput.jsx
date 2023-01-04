@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useField } from 'formik'
-import { StyledNumberInput } from './styled/components/NumberInput.styled';
+import { StyledNumberInput } from '../../styled/inputs/NumberInput.styled';
 
 const NumberInput = ({ ...props }) => {
   const [field, meta] = useField(props);

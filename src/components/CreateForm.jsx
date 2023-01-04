@@ -1,18 +1,18 @@
-import { Button } from './Button'
-import PeopleSelect from './PeopleSelect'
-import TagSelect from './TagSelect'
-import EstimateSelect from './EstimateSelect'
-import CustomDatePicker from './CustomDatePicker'
+import { Button } from './inputs/Button'
+import PeopleSelect from './inputs/PeopleSelect'
+import TagSelect from './inputs/TagSelect'
+import EstimateSelect from './inputs/EstimateSelect'
+import CustomDatePicker from './inputs/CustomDatePicker'
 import { FormikProvider, useFormik } from 'formik'
-import TextInput from './TextInput'
+import TextInput from './inputs/TextInput'
 import { array, object, date, string } from 'yup'
 import { useMutation } from '@apollo/client'
 import { CREATE_TASK_MUTATION } from '../graphQL/mutations'
 import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
-import { StyledCreateForm } from './styled/components/CreateForm.styled'
-import { StyledFlexContainer } from './styled/FlexContainer.styled'
+import { StyledCreateForm } from './../styled/components/CreateForm.styled'
+import { StyledFlexContainer } from './../styled/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
-import StatusSelect from './StatusSelect'
+import StatusSelect from './inputs/StatusSelect'
 
 const INITIAL_DATA = {
   name: "",
@@ -52,7 +52,6 @@ const CreateForm = ({ onCancel }) => {
 
   const [createTaskMutation, { loading, error }] = useMutation(CREATE_TASK_MUTATION, {
     update: (cache, { data }) => {
-      console.log(data);
 
       const { tasks } = cache.readQuery({
         query: GET_TASKS_BY_STATUS,

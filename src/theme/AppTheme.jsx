@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components"
-import Global from "./../components/styled/Global.styled"
+import Global from "./../styled/Global.styled"
 import { darkTheme } from "./darkTheme"
 import { SkeletonTheme } from 'react-loading-skeleton'
 

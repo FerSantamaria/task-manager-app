@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client'
 import { ActionBar } from '../../components/ActionBar'
-import { StyledCard } from '../../components/styled/components/Card.styled'
+import { StyledCard } from './../../styled/components/Card.styled'
 import TaskColumn from '../../components/TaskColumn'
 import { ModalProvider } from '../../contexts/ModalContext'
 import { GET_STATUSES } from '../../graphQL/queries'
-import { StyledContentWrapper } from "./../../components/styled/pages/ContentWrapper.styled"
-import { StyledColumnsContainer } from "./../../components/styled/pages/Dashboard.styled"
+import { StyledContentWrapper } from "./../../styled/pages/ContentWrapper.styled"
+import { StyledColumnsContainer } from "./../../styled/pages/Dashboard.styled"
 
 export const Dashboard = () => {  
   const { loading, error, data } = useQuery(GET_STATUSES)

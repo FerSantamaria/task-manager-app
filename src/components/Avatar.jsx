@@ -1,4 +1,4 @@
-import { StyledAvatar } from './styled/components/Avatar.styled'
+import { StyledAvatar } from './../styled/components/Avatar.styled'
 import UserAvatar from './../assets/avatar.jpg'
 import PropTypes from 'prop-types'
 

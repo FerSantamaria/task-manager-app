@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import { useField } from 'formik'
-import { StyledDatePicker } from './styled/components/CustomDatePicker.styled'
+import { StyledDatePicker } from '../../styled/inputs/CustomDatePicker.styled'
 import "react-datepicker/dist/react-datepicker.css"
-import "./styled/components/DatePicker.scss"
+import "./../../styled/inputs/DatePicker.scss"
 
 const CustomDatePicker = ({ ...props }) => {
   const [ field, meta, helpers] = useField(props);

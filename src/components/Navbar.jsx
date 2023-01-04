@@ -1,6 +1,6 @@
 import Avatar from "./Avatar";
-import { ClearableTextInput } from "./ClearableTextInput";
-import { StyledNavbar, StyledSearch, StyledActions } from "./styled/components/Navbar.styled";
+import { ClearableTextInput } from "./inputs/ClearableTextInput";
+import { StyledNavbar, StyledSearch, StyledActions } from "./../styled/components/Navbar.styled";
 import { ReactComponent as MagnifierIcon } from './../assets/icons/magnifier.svg';
 import { ReactComponent as BellIcon } from './../assets/icons/bell.svg';
 

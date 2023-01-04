@@ -3,20 +3,21 @@ import Select from 'react-select'
 import PropTypes from 'prop-types'
 import { useField } from 'formik'
 import { useQuery } from '@apollo/client'
-import { GET_STATUSES } from '../graphQL/queries'
-import { SelectStyles, StyledPeopleMenuOption  } from './styled/components/Select.styled'
+import { GET_POINT_ESTIMATES } from '../../graphQL/queries'
+import { SelectStyles, StyledPeopleMenuOption  } from '../../styled/components/Select.styled'
+import { ReactComponent as EstimateIcon } from './../../assets/icons/plus-minus.svg'
 
-const StatusSelect = ({ ...props }) => {
+const EstimateSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])
-  const { loading, data } = useQuery(GET_STATUSES)
+  const { loading, data } = useQuery(GET_POINT_ESTIMATES)
   const [ field, meta, helpers ] = useField(props)
   const hasError = meta.touched && (meta.error !== undefined)
 
   useEffect(() => {
     if (data?.__type?.enumValues) {
-      let fetchedData = data.__type.enumValues.map(item => ({value: item.name, label: item.name.replaceAll("_", " ")}))
+      let fetchedData = data.__type.enumValues.map(item => ({value: item.name, label: `${item.name} Points`}))
       let options = [{
-        label: "Status",
+        label: "Estimate",
         options: fetchedData
       }]
 
@@ -27,18 +28,21 @@ const StatusSelect = ({ ...props }) => {
   return (
     <Select
       styles={SelectStyles}
-      name="status"
+      name="type"
       options={options}
       isLoading={loading}
       loadingMessage={()=> "Loading data"}
+      getOptionValue={option => option.value}
       formatOptionLabel={option => (
         <StyledPeopleMenuOption>
+          <EstimateIcon />
           <span>{option.label}</span>
         </StyledPeopleMenuOption>
       )}
       placeholder={
         <StyledPeopleMenuOption>
-          <span>Status</span>
+          <EstimateIcon />
+          <span>Estimate</span>
         </StyledPeopleMenuOption>
       }
 
@@ -55,8 +59,8 @@ const StatusSelect = ({ ...props }) => {
   )
 }
 
-StatusSelect.propTypes = {
+EstimateSelect.propTypes = {
   name: PropTypes.string.isRequired
 }
 
-export default StatusSelect
+export default EstimateSelect

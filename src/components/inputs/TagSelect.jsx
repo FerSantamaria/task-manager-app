@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import Select, { components } from 'react-select'
 import PropTypes from 'prop-types'
 import { useField } from 'formik'
-import { GET_TAGS } from '../graphQL/queries'
+import { GET_TAGS } from '../../graphQL/queries'
 import { useQuery } from '@apollo/client'
-import { ReactComponent as TagIcon } from './../assets/icons/tag.svg'
-import { SelectStyles, StyledPeopleMenuOption, StyledTageMenuCheckbox } from './styled/components/Select.styled'
+import { ReactComponent as TagIcon } from './../../assets/icons/tag.svg'
+import { SelectStyles, StyledPeopleMenuOption, StyledTageMenuCheckbox } from '../../styled/components/Select.styled'
 
 const InputOption = ({
   isSelected,

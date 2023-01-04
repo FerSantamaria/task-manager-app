@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { StyledClearableTextInput } from './styled/components/ClearableTextInput.styled';
-import { ReactComponent as CancelIcon } from './../assets/icons/cancel.svg';
+import { StyledClearableTextInput } from '../../styled/inputs/ClearableTextInput.styled';
+import { ReactComponent as CancelIcon } from './../../assets/icons/cancel.svg';
 
 export const ClearableTextInput = () => {
   const [showCancelButton, setShowCancelButton] = useState(false)

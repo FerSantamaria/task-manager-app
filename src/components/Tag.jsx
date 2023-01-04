@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { StyledTag } from './styled/components/Tag.styled'
+import { StyledTag } from './../styled/components/Tag.styled'
 
 const Tag = ({ variant, outline, children}) => {
   return (

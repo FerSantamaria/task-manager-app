@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { StyledButton } from './styled/components/Button.styled'
+import { StyledButton } from '../../styled/inputs/Button.styled'
 
 const Button = ({ children, ...props }) => {
   return (

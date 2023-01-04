@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { StyledActionBar } from './styled/components/ActionBar.styled'
-import { Button } from './Button'
+import { StyledActionBar } from './../styled/components/ActionBar.styled'
+import { Button } from './inputs/Button'
 import Modal from './Modal'
 import { ReactComponent as DashboardIcon } from './../assets/icons/dashboard.svg'
 import { ReactComponent as BarsIcon } from './../assets/icons/bars.svg'

@@ -1,13 +1,13 @@
 import { createContext, useRef, useState } from "react";
 import Modal from "./../components/Modal";
-import { Button } from "./../components/Button";
-import { StyledFlexContainer } from "../components/styled/FlexContainer.styled";
+import { Button } from "./../components/inputs/Button";
+import { StyledFlexContainer } from "./../styled/FlexContainer.styled";
 
 const ModalContext = createContext();
 const { Provider } = ModalContext;
 
 const ModalProvider = ({ children }) => {
-  const [confirmText, setConfirmText] = useState("confirm")
+  const [confirmButtonText, setConfirmButtonText] = useState("confirm")
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const resolver = useRef();
 
@@ -32,17 +32,19 @@ const ModalProvider = ({ children }) => {
   return(
     <Provider value={{
       showConfirmation: handleShow,
-      setConfirmText
+      setConfirmButtonText
     }}>
       {children}
 
       { showConfirmationModal &&
         <Modal>
-          <p>Are you sure you want to delete this task?</p>
-          <StyledFlexContainer justifyContent="flex-end" gap="16px" style={{ width: "100%" }}>
-            <Button onClick={handleCancel} unselected>Cancel</Button>
-            <Button onClick={handleOk} >{confirmText}</Button>
-          </StyledFlexContainer>
+          <>
+            <p>Are you sure you want to delete this task?</p>
+            <StyledFlexContainer justifyContent="flex-end" gap="16px" style={{ width: "100%" }}>
+              <Button onClick={handleCancel} unselected>Cancel</Button>
+              <Button onClick={handleOk} >{confirmButtonText}</Button>
+            </StyledFlexContainer>
+          </>
         </Modal>
       }
 
