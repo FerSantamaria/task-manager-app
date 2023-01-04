@@ -8,8 +8,4 @@ export const StyledFlexContainer = styled.div`
   align-content: ${({ alignContent }) => alignContent || 'initial'};
   gap: ${({ gap }) => gap || 'initial'};
   flex-wrap: ${({ flexWrap }) => flexWrap || 'initial'};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
-    flex-direction: column;
-  }
 `
