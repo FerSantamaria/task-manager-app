@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { StyledModal } from './styled/components/Modal.styled'
 
-const Modal = ({onCancel, onConfirm, confirmText, cancelText, children}) => {
+const Modal = ({onCancel, confirmText, cancelText, children}) => {
   
   const handlePropagation = (e) => {
     e.stopPropagation()
@@ -11,7 +11,7 @@ const Modal = ({onCancel, onConfirm, confirmText, cancelText, children}) => {
 
   const childrenWithProps = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
-      return cloneElement(child, { key: index, onCancel, onConfirm, confirmText, cancelText });
+      return cloneElement(child, { key: index, onCancel, confirmText, cancelText });
     }
   })
 
@@ -27,7 +27,6 @@ const Modal = ({onCancel, onConfirm, confirmText, cancelText, children}) => {
 
 Modal.propTypes = {
   onCancel: PropTypes.func,
-  onConfirm: PropTypes.func,
   confirmText: PropTypes.string,
   cancelText: PropTypes.string,
 }
