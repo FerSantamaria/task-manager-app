@@ -4,7 +4,7 @@ import { StyledCard } from './../../styled/components/Card.styled'
 import TaskColumn from '../../components/TaskColumn'
 import { ModalProvider } from '../../contexts/ModalContext'
 import { GET_STATUSES } from '../../graphQL/queries'
-import { StyledContentWrapper } from "./../../styled/pages/ContentWrapper.styled"
+import { StyledContentWrapper } from "./../../styled/layouts/ContentWrapper.styled"
 import { StyledColumnsContainer } from "./../../styled/pages/Dashboard.styled"
 
 export const Dashboard = () => {  

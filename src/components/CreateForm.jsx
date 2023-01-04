@@ -10,7 +10,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_TASK_MUTATION } from '../graphQL/mutations'
 import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
 import { StyledCreateForm } from './../styled/components/CreateForm.styled'
-import { StyledFlexContainer } from './../styled/FlexContainer.styled'
+import { StyledFlexContainer } from '../styled/layouts/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
 import StatusSelect from './inputs/StatusSelect'
 

@@ -5,8 +5,8 @@ import { GET_PROFILE_INFO } from '../../graphQL/queries'
 import { timeToText } from '../../utils/Dates'
 import Skeleton from 'react-loading-skeleton'
 import { StyledCard } from './../../styled/components/Card.styled'
-import { StyledFlexContainer } from './../../styled/FlexContainer.styled'
-import { StyledContentWrapper } from './../../styled/pages/ContentWrapper.styled'
+import { StyledFlexContainer } from '../../styled/layouts/FlexContainer.styled'
+import { StyledContentWrapper } from './../../styled/layouts/ContentWrapper.styled'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 export const Settings = () => {

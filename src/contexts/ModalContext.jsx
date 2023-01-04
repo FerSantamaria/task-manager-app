@@ -1,7 +1,7 @@
 import { createContext, useRef, useState } from "react";
 import Modal from "./../components/Modal";
 import { Button } from "./../components/inputs/Button";
-import { StyledFlexContainer } from "./../styled/FlexContainer.styled";
+import { StyledFlexContainer } from "../styled/layouts/FlexContainer.styled";
 
 const ModalContext = createContext();
 const { Provider } = ModalContext;
