@@ -10,7 +10,6 @@ import { ReactComponent as PersonIcon } from './../assets/icons/person.svg'
 
 const PeopleSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])
-  const [selectedValue, setSelectedValue] = useState()
   const { loading, data } = useQuery(GET_USERS)
   const [ field, meta, helpers ] = useField(props)
   const hasError = meta.touched && (meta.error !== undefined)

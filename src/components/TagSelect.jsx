@@ -42,7 +42,6 @@ const MultiValueContainer = ({ selectProps, data }) => {
 
 const TagSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])
-  const [selectedValue, setSelectedValue] = useState()
   const { loading, data } = useQuery(GET_TAGS)
   const [ field, meta, helpers ] = useField(props)
   const hasError = meta.touched && (meta.error !== undefined)

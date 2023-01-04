@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const StyledModal = styled.aside`
   display: ${({ open }) => open ? 'flex' : 'none'}; 
   position: fixed; 
-  z-index: 2; 
+  z-index: 99; 
   left: 0;
   top: 0;
   width: 100%; 

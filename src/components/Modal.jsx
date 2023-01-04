@@ -9,9 +9,9 @@ const Modal = ({isOpen, onCancel, onConfirm, confirmText, cancelText, children})
     e.stopPropagation()
   }
 
-  const childrenWithProps = Children.map(children, (child) => {
+  const childrenWithProps = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
-      return cloneElement(child, { isOpen, onCancel, onConfirm, confirmText, cancelText });
+      return cloneElement(child, { key: index, isOpen, onCancel, onConfirm, confirmText, cancelText });
     }
   })
 

@@ -13,15 +13,7 @@ import { StyledCreateForm } from './styled/components/CreateForm.styled'
 import { StyledFlexContainer } from './styled/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
 import StatusSelect from './StatusSelect'
-
-const INITIAL_DATA = {
-  name: "",
-  assigneeId: "",
-  dueDate: "",
-  pointEstimate: "",
-  status: "TODO",
-  tags: []
-}
+import dayjs from 'dayjs'
 
 const VALIDATION_SCHEMA = object({
   name: string().required(),
@@ -32,8 +24,17 @@ const VALIDATION_SCHEMA = object({
   tags: array().of(string()).min(1).required(),
 })
 
-const CreateForm = ({ onCancel }) => {
-  
+const EditForm = ({ task, onCancel }) => {
+
+  const INITIAL_DATA = {
+    name: task.name,
+    assigneeId: {value: task.assignee.id, label: task.assignee.fullName, image: task.assignee.avatar},
+    dueDate: dayjs(task.dueDate).toDate(),
+    pointEstimate: {value: task.pointEstimate, label: `${task.pointEstimate} Points`},
+    status: {value: task.status, label: task.status.replaceAll("_", " ")},
+    tags: task.tags.map(item => ({ value: item, label: item.replaceAll("_", " ") }))
+  }
+
   const submitForm = (formValues) => {
     const fullValues = {
       ...formValues,
@@ -89,6 +90,7 @@ const CreateForm = ({ onCancel }) => {
           <EstimateSelect name="pointEstimate" />
           <PeopleSelect name="assigneeId"/>
           <TagSelect name="tags" />
+          <StatusSelect name="status" />
           <CustomDatePicker name="dueDate" />
         </div>
       </FormikProvider>
@@ -99,13 +101,13 @@ const CreateForm = ({ onCancel }) => {
           
           <StyledFlexContainer justifyContent="flex-end" flexDirection="row" gap="16px">
             <Button onClick={onCancel} disabled={loading} unselected>Cancel</Button>
-            <Button onClick={formik.submitForm} disabled={loading} >{ loading ? <SpinnerIcon /> : "Create"}</Button>
+            <Button onClick={formik.submitForm} disabled={loading} >{ loading ? <SpinnerIcon /> : "Update"}</Button>
           </StyledFlexContainer>
         </StyledFlexContainer>
     </StyledCreateForm>
   )
 }
 
-CreateForm.propTypes = {}
+EditForm.propTypes = {}
 
-export default CreateForm
+export default EditForm

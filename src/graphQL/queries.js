@@ -41,6 +41,8 @@ export const GET_TASKS = gql`
       pointEstimate
       status
       assignee {
+        id
+        fullName
         avatar
       }
     }
@@ -57,6 +59,8 @@ export const GET_TASKS_BY_STATUS = gql`
       pointEstimate
       status
       assignee {
+        id
+        fullName
         avatar
       }
 	  }
