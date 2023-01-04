@@ -13,6 +13,7 @@ const Dropdown = ({ children }) => {
     setOpen(false);
   }
   
+  // Using the hook to detect scroll and clicks outside the dropdown
   const ref = useOutsideClick(handleClickOutside);
 
   const handleOpen = () => {

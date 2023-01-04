@@ -13,6 +13,7 @@ import { StyledCreateForm } from './../styled/components/CreateForm.styled'
 import { StyledFlexContainer } from '../styled/layouts/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
 
+// Initializing data to an empty state
 const INITIAL_DATA = {
   name: "",
   assigneeId: "",
@@ -21,6 +22,7 @@ const INITIAL_DATA = {
   tags: []
 }
 
+// Yup validations rules
 const VALIDATION_SCHEMA = object({
   name: string().required(),
   assigneeId: object().required(),
@@ -32,6 +34,7 @@ const VALIDATION_SCHEMA = object({
 const CreateForm = ({ onCancel }) => {
   
   const submitForm = (formValues) => {
+    // Constructing data object from formik values
     const fullValues = {
       ...formValues,
       assigneeId: formValues.assigneeId.value,
@@ -43,6 +46,7 @@ const CreateForm = ({ onCancel }) => {
     createTaskMutation({ variables: fullValues })
   }
 
+  // Initialing formik object
   const formik = useFormik({
     initialValues: INITIAL_DATA,
     validationSchema: VALIDATION_SCHEMA,
@@ -50,13 +54,16 @@ const CreateForm = ({ onCancel }) => {
   })  
 
   const [createTaskMutation, { loading, error }] = useMutation(CREATE_TASK_MUTATION, {
+    // Update functions help us to update de cache after a the mutation
     update: (cache, { data }) => {
 
+      // Getting old data from cache
       const { tasks } = cache.readQuery({
         query: GET_TASKS_BY_STATUS,
         variables: { status: data.createTask.status }
       })
 
+      // Updating cache data with new info
       cache.writeQuery({
         query: GET_TASKS_BY_STATUS,
         variables: { status: data.createTask.status },
@@ -68,12 +75,13 @@ const CreateForm = ({ onCancel }) => {
         }
       })
     },
+    // After all operations done
     onCompleted: () => {
       formik.resetForm()
       onCancel()
     }
   });
-  console.log(formik.errors);
+
   return (
     <StyledCreateForm>
       {

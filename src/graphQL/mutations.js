@@ -1,4 +1,5 @@
-import { gql } from "@apollo/client";
+import { gql } from "@apollo/client"
+import { TaskType } from "./types" 
 
 export const CREATE_TASK_MUTATION = gql`
   mutation createTaskMutation(
@@ -17,18 +18,7 @@ export const CREATE_TASK_MUTATION = gql`
       status: $status
       tags: $tags
     }){
-      id
-      name
-      tags
-      dueDate
-      pointEstimate
-      status
-      position
-      assignee {
-        id
-        fullName
-        avatar
-      }
+      ${TaskType}
     }
   }
 `
@@ -52,18 +42,7 @@ export const UPDATE_TASK_MUTATION = gql`
       status: $status
       tags: $tags
     }){
-      id
-      name
-      tags
-      dueDate
-      pointEstimate
-      status
-      position
-      assignee {
-        id
-        fullName
-        avatar
-      }
+      ${TaskType}
     }
   }
 `
@@ -75,17 +54,7 @@ export const DELETE_TASK_MUTATION = gql`
     deleteTask( input: {
       id: $id
     }){
-      id
-      name
-      tags
-      dueDate
-      pointEstimate
-      status
-      assignee {
-        id
-        fullName
-        avatar
-      }
+      ${TaskType}
     }
   }
 `

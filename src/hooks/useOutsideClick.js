@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 
+//This hooks creates a listener for checking when a click or scrolls events happens outside an element 
 export const useOutsideClick = (callback) => {
   const ref = useRef();
 

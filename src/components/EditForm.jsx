@@ -15,6 +15,7 @@ import { StyledCreateForm } from './../styled/components/CreateForm.styled'
 import { StyledFlexContainer } from '../styled/layouts/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
 
+// Yup validations rules
 const VALIDATION_SCHEMA = object({
   name: string().required(),
   position: number().min(1).required(),
@@ -26,6 +27,7 @@ const VALIDATION_SCHEMA = object({
 
 const EditForm = ({ task, onCancel }) => {
 
+  // Initializing data with current task data (Recreating full values to be compatible with form imputs)
   const INITIAL_DATA = {
     name: task.name,
     position: task.position,
@@ -36,6 +38,7 @@ const EditForm = ({ task, onCancel }) => {
   }
 
   const submitForm = (formValues) => {
+    // Constructing data object from formik values
     const fullValues = {
       ...formValues,
       id: task.id,
@@ -48,6 +51,7 @@ const EditForm = ({ task, onCancel }) => {
     updateTaskMutation({ variables: fullValues })
   }
 
+  // Initialing formik object
   const formik = useFormik({
     initialValues: INITIAL_DATA,
     validationSchema: VALIDATION_SCHEMA,
@@ -55,16 +59,18 @@ const EditForm = ({ task, onCancel }) => {
   })  
 
   const [updateTaskMutation, { loading, error }] = useMutation(UPDATE_TASK_MUTATION, {
+    // Update functions help us to update de cache after a the mutation
     update: (cache, { data }) => {
       const oldStatus = task.status
       const newStatus = data.updateTask.status
 
-      // Removing from all list
+      // Getting old data from current list
       const { tasks: oldTasks } = cache.readQuery({
         query: GET_TASKS_BY_STATUS,
         variables: { status: oldStatus }
       })
       
+      // Removing from all list
       cache.writeQuery({
         query: GET_TASKS_BY_STATUS,
         variables: { status: oldStatus },
@@ -73,12 +79,13 @@ const EditForm = ({ task, onCancel }) => {
         }
       })
 
-      // Adding to new list
+      // Getting old data from new list
       const { tasks } = cache.readQuery({
         query: GET_TASKS_BY_STATUS,
         variables: { status: newStatus }
       })
-
+      
+      // Adding to new list
       cache.writeQuery({
         query: GET_TASKS_BY_STATUS,
         variables: { status: newStatus },
@@ -90,6 +97,7 @@ const EditForm = ({ task, onCancel }) => {
         }
       })
     },
+    // After all operations done
     onCompleted: () => {
       formik.resetForm()
       onCancel()

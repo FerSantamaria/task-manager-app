@@ -1,12 +1,11 @@
-import { gql } from "@apollo/client";
+import { gql } from "@apollo/client"
+import { enumType, TaskType } from "./types" 
 
 //ENUM QUERIES
 export const GET_STATUSES = gql`
   query StatusesList{
     __type(name: "Status"){
-      enumValues{
-        name
-      }
+      ${enumType}
     }
   }
 `
@@ -14,18 +13,14 @@ export const GET_STATUSES = gql`
 export const GET_POINT_ESTIMATES = gql`
   query PointEstimatesList{
     __type(name: "PointEstimate"){
-      enumValues{
-        name
-      }
+      ${enumType}
     }
   }
 `
 export const GET_TAGS = gql`
   query TagsList{
     __type(name: "TaskTag"){
-      enumValues{
-        name
-      }
+      ${enumType}
     }
   }
 `
@@ -34,18 +29,7 @@ export const GET_TAGS = gql`
 export const GET_TASKS = gql`
   query FilteredTasks{
     tasks(input: {}){
-      id
-      name
-      tags
-      dueDate
-      pointEstimate
-      status
-      position
-      assignee {
-        id
-        fullName
-        avatar
-      }
+      ${TaskType}
     }
   }
 `
@@ -53,18 +37,7 @@ export const GET_TASKS = gql`
 export const GET_TASKS_BY_STATUS = gql`
   query TaskByStatus($status: Status!){
     tasks(input: {status: $status}) {
-      id
-      name
-      tags
-      dueDate
-      pointEstimate
-      status
-      position
-      assignee {
-        id
-        fullName
-        avatar
-      }
+      ${TaskType}
 	  }
   }
 `

@@ -3,6 +3,7 @@ import Modal from "./../components/Modal";
 import { Button } from "./../components/inputs/Button";
 import { StyledFlexContainer } from "../styled/layouts/FlexContainer.styled";
 
+// Creating a custom context to handle confirmation dialogs
 const ModalContext = createContext();
 const { Provider } = ModalContext;
 
@@ -11,6 +12,7 @@ const ModalProvider = ({ children }) => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const resolver = useRef();
 
+  // On show a new promise is generated
   const handleShow = () => {
     setShowConfirmationModal(true);
 
@@ -19,17 +21,20 @@ const ModalProvider = ({ children }) => {
     });
   };
 
+  // If the ok button is pressed, the promise resolves
   const handleOk = () => {
     resolver.current && resolver.current(true);
     setShowConfirmationModal(false)
   };
 
+  // If the ok button is pressed, the promise rejects
   const handleCancel = () => {
     resolver.current && resolver.current(false);
     setShowConfirmationModal(false)
   };
 
   return(
+    // Exposing methods
     <Provider value={{
       showConfirmation: handleShow,
       setConfirmButtonText

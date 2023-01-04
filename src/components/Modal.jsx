@@ -5,16 +5,14 @@ import { StyledModal } from './../styled/components/Modal.styled'
 
 const Modal = ({onCancel, confirmText, cancelText, children}) => {
   
-  const handlePropagation = (e) => {
-    e.stopPropagation()
-  }
-
+  // Cloning children and passing all parent props to them
   const childrenWithProps = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
       return cloneElement(child, { key: index, onCancel, confirmText, cancelText });
     }
   })
 
+  // Return a portal for having our modal on a separate container than the rest of the app
   return ReactDOM.createPortal(
     <StyledModal>
       <div onClick={handlePropagation}>
