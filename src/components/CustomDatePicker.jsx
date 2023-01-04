@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useField } from 'formik'
 import { StyledDatePicker } from './styled/components/CustomDatePicker.styled'
@@ -6,13 +5,12 @@ import "react-datepicker/dist/react-datepicker.css"
 import "./styled/components/DatePicker.scss"
 
 const CustomDatePicker = ({ ...props }) => {
-  const [startDate, setStartDate] = useState();
   const [ field, meta, helpers] = useField(props);
   const hasError = meta.touched && (meta.error !== undefined)
   
   return (
      <StyledDatePicker
-      selected={startDate}
+      selected={field.value}
       showPopperArrow={false}
       dateFormat="MMM. dd yyyy"
       todayButton="Today"
@@ -26,7 +24,6 @@ const CustomDatePicker = ({ ...props }) => {
       {...props}
 
       onChange={(date) => {
-        setStartDate(date)
         helpers.setValue(date)
       }}
 

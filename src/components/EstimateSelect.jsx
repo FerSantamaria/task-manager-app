@@ -9,7 +9,6 @@ import { ReactComponent as EstimateIcon } from './../assets/icons/plus-minus.svg
 
 const EstimateSelect = ({ ...props }) => {
   const [options, setOptions] = useState([])
-  const [selectedValue, setSelectedValue] = useState()
   const { loading, data } = useQuery(GET_POINT_ESTIMATES)
   const [ field, meta, helpers ] = useField(props)
   const hasError = meta.touched && (meta.error !== undefined)
@@ -33,6 +32,7 @@ const EstimateSelect = ({ ...props }) => {
       options={options}
       isLoading={loading}
       loadingMessage={()=> "Loading data"}
+      getOptionValue={option => option.value}
       formatOptionLabel={option => (
         <StyledPeopleMenuOption>
           <EstimateIcon />
