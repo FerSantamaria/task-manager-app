@@ -31,7 +31,7 @@ export const Task = ({ task }) => {
   return (
     <StyledTask>
       <StyledTitleWrapper>
-        <StyledTitle>{task.name}</StyledTitle>
+        <StyledTitle>{task.position} - {task.name}</StyledTitle>
         <Dropdown>
           <Button unselected onClick={()=>setOpenModal(true)}><PencilIcon /> Edit</Button>
           <Button unselected onClick={()=>handleDelete(task.id)}><TrashIcon /> { loading ? "Deleting" : "Delete"}</Button>

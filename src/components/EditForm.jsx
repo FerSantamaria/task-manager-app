@@ -1,22 +1,23 @@
 import { Button } from './Button'
-import PeopleSelect from './PeopleSelect'
 import TagSelect from './TagSelect'
 import EstimateSelect from './EstimateSelect'
 import CustomDatePicker from './CustomDatePicker'
 import { FormikProvider, useFormik } from 'formik'
 import TextInput from './TextInput'
-import { array, object, date, string } from 'yup'
+import { array, object, date, string, number } from 'yup'
 import { useMutation } from '@apollo/client'
-import { UPDATE_TASK_MUTATION } from '../graphQL/mutations'
 import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
+import { UPDATE_TASK_MUTATION } from '../graphQL/mutations'
 import { StyledCreateForm } from './styled/components/CreateForm.styled'
 import { StyledFlexContainer } from './styled/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
 import StatusSelect from './StatusSelect'
 import dayjs from 'dayjs'
+import NumberInput from './NumberInput'
 
 const VALIDATION_SCHEMA = object({
   name: string().required(),
+  position: number().min(1).required(),
   dueDate: date().required(),
   pointEstimate: object().required(),
   status: object().required(),
@@ -38,7 +39,7 @@ const EditForm = ({ task, onCancel }) => {
     const fullValues = {
       ...formValues,
       id: task.id,
-      position: task.position,
+      position: formValues.position,
       pointEstimate: formValues.pointEstimate.value,
       tags: formValues.tags.map(item => item.value),
       status: formValues.status.value,
@@ -55,23 +56,39 @@ const EditForm = ({ task, onCancel }) => {
 
   const [updateTaskMutation, { loading, error }] = useMutation(UPDATE_TASK_MUTATION, {
     update: (cache, { data }) => {
-      console.log(data);
+      const oldStatus = task.status
+      const newStatus = data.updateTask.status
 
-      // const { tasks } = cache.readQuery({
-      //   query: GET_TASKS_BY_STATUS,
-      //   variables: { status: data.createTask.status }
-      // })
+      // Removing from all list
+      const { tasks: oldTasks } = cache.readQuery({
+        query: GET_TASKS_BY_STATUS,
+        variables: { status: oldStatus }
+      })
+      
+      cache.writeQuery({
+        query: GET_TASKS_BY_STATUS,
+        variables: { status: oldStatus },
+        data: {
+          tasks: oldTasks.filter(task => task.id !== data.updateTask.id)
+        }
+      })
 
-      // cache.writeQuery({
-      //   query: GET_TASKS_BY_STATUS,
-      //   variables: { status: data.createTask.status },
-      //   data: {
-      //     tasks: [
-      //       ...tasks,
-      //       data.createTask,
-      //     ]
-      //   }
-      // })
+      // Adding to new list
+      const { tasks } = cache.readQuery({
+        query: GET_TASKS_BY_STATUS,
+        variables: { status: newStatus }
+      })
+
+      cache.writeQuery({
+        query: GET_TASKS_BY_STATUS,
+        variables: { status: newStatus },
+        data: {
+          tasks: [
+            ...tasks,
+            data.updateTask,
+          ].sort((a,b) => a.position - b.position)
+        }
+      })
     },
     onCompleted: () => {
       formik.resetForm()
@@ -90,7 +107,7 @@ const EditForm = ({ task, onCancel }) => {
         <TextInput name="name" placeholder="Task Title" />
         <div>
           <EstimateSelect name="pointEstimate" />
-          {task.position}
+          <NumberInput name="position" />
           <TagSelect name="tags" />
           <StatusSelect name="status" />
           <CustomDatePicker name="dueDate" />
@@ -103,7 +120,7 @@ const EditForm = ({ task, onCancel }) => {
           
           <StyledFlexContainer justifyContent="flex-end" flexDirection="row" gap="16px">
             <Button onClick={onCancel} disabled={loading} unselected>Cancel</Button>
-            <Button onClick={formik.submitForm} disabled={loading} >{ loading ? <SpinnerIcon /> : "Update"}</Button>
+            <Button onClick={formik.submitForm} disabled={loading} >{ loading ? <SpinnerIcon /> : "Confirm"}</Button>
           </StyledFlexContainer>
         </StyledFlexContainer>
     </StyledCreateForm>

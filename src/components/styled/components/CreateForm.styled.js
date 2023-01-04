@@ -11,7 +11,7 @@ export const StyledCreateForm = styled.section`
     background-color: transparent;
     border: none;
     outline: none;
-    color: ${({theme}) => theme.colors.neutral.one};
+    color: ${({ theme }) => theme.colors.neutral.one};
     width: 100%;
     padding: 6px 0;
     font-size: 20px;

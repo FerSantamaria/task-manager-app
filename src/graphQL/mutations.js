@@ -58,6 +58,7 @@ export const UPDATE_TASK_MUTATION = gql`
       dueDate
       pointEstimate
       status
+      position
       assignee {
         id
         fullName
