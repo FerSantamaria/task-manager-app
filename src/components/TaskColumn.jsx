@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
-import { StyledCard } from './../styled/components/Card.styled'
 import { Task } from './Task'
-import { StyledTaskColumn, StyledListTitle } from './../styled/components/TaskColumn.styled'
 import { useQuery } from '@apollo/client'
 import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
+import { StyledCard } from './../styled/components/Card.styled'
+import { StyledTaskColumn, StyledListTitle } from './../styled/components/TaskColumn.styled'
 
 const TaskColumn = ({ label }) => {
   const formatedLabel = label.replaceAll('_', ' ').toLowerCase()

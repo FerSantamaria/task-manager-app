@@ -4,18 +4,17 @@ import Tag from '../../components/Tag'
 import { GET_PROFILE_INFO } from '../../graphQL/queries'
 import { timeToText } from '../../utils/Dates'
 import Skeleton from 'react-loading-skeleton'
-import { StyledCard } from './../../styled/components/Card.styled'
 import { StyledFlexContainer } from '../../styled/layouts/FlexContainer.styled'
-import { StyledContentWrapper } from './../../styled/layouts/ContentWrapper.styled'
+import { InfoContainer, InfoCard } from '../../styled/pages/Settings.styled'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 export const Settings = () => {
   const { data } = useQuery(GET_PROFILE_INFO)
 
   return (
-    <StyledContentWrapper style={{ paddingRight: "32px", alignItems: "center" }}>
+    <InfoContainer>
       { 
-        <StyledCard alignItems="center" gap="16px" style={{ alignItems: "flex-start", flexDirection: "column", width: "fit-content" }}>
+        <InfoCard alignItems="center" gap="16px">
           <StyledFlexContainer flexDirection="column" alignItems="center" gap="8px">
             
             { data?.profile ?
@@ -46,9 +45,9 @@ export const Settings = () => {
             }
 
           </StyledFlexContainer>
-        </StyledCard>
+        </InfoCard>
       }
       
-    </StyledContentWrapper>
+    </InfoContainer>
   )
 }

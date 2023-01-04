@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { StyledActionBar } from './../styled/components/ActionBar.styled'
 import { Button } from './inputs/Button'
 import Modal from './Modal'
+import CreateForm from './CreateForm'
+import { StyledActionBar } from './../styled/components/ActionBar.styled'
 import { ReactComponent as DashboardIcon } from './../assets/icons/dashboard.svg'
 import { ReactComponent as BarsIcon } from './../assets/icons/bars.svg'
 import { ReactComponent as PlusIcon } from './../assets/icons/plus.svg'
-import CreateForm from './CreateForm'
 
 export const ActionBar = () => {
   const [open, setOpen] = useState(false);
@@ -13,10 +13,10 @@ export const ActionBar = () => {
   return (
     <StyledActionBar>
       <div>
-        <Button unselected onClick={() => alert("HI")} >
+        <Button unselected>
           <BarsIcon />
         </Button>
-        <Button selected onClick={() => alert("HI")} >
+        <Button selected>
           <DashboardIcon />
         </Button>
       </div>

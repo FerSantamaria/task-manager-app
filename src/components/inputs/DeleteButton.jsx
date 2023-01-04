@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { ReactComponent as TrashIcon } from './../../assets/icons/trash-can.svg';
 import { Button } from './Button';
 import { ModalContext } from '../../contexts/ModalContext';
 import { useMutation } from '@apollo/client'
 import { DELETE_TASK_MUTATION } from '../../graphQL/mutations'
 import { GET_TASKS_BY_STATUS } from '../../graphQL/queries'; 
+import { ReactComponent as TrashIcon } from './../../assets/icons/trash-can.svg';
 
 const DeleteButton = ({ task }) => {
   const modalContext = useContext(ModalContext)

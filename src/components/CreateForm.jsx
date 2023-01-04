@@ -12,7 +12,6 @@ import { GET_TASKS_BY_STATUS } from '../graphQL/queries'
 import { StyledCreateForm } from './../styled/components/CreateForm.styled'
 import { StyledFlexContainer } from '../styled/layouts/FlexContainer.styled'
 import { ReactComponent as SpinnerIcon } from './../assets/icons/spinner.svg'
-import StatusSelect from './inputs/StatusSelect'
 
 const INITIAL_DATA = {
   name: "",

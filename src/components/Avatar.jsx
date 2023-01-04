@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types'
 import { StyledAvatar } from './../styled/components/Avatar.styled'
 import UserAvatar from './../assets/avatar.jpg'
-import PropTypes from 'prop-types'
 
 const Avatar = ({ size, url }) => {
   return (

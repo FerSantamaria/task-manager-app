@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import Modal from './Modal'
+import EditForm from './EditForm'
+import DeleteButton from './inputs/DeleteButton'
 import Tag from './Tag'
 import Avatar from './Avatar'
 import Reaction from './Reaction'
@@ -12,9 +15,6 @@ import { ReactComponent as ClipIcon } from './../assets/icons/paperclip.svg'
 import { ReactComponent as TreeIcon } from './../assets/icons/file-tree.svg'
 import { ReactComponent as CommentIcon } from './../assets/icons/text-bubble.svg'
 import { ReactComponent as PencilIcon } from './../assets/icons/pencil.svg'
-import Modal from './Modal'
-import EditForm from './EditForm'
-import DeleteButton from './inputs/DeleteButton'
 
 export const Task = ({ task }) => {
   const [openModal, setOpenModal] = useState(false)
